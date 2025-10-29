@@ -1,5 +1,20 @@
 import React from 'react';
 
+// Brand color gradients for VPN logos
+const getBrandGradient = (vpnId: string): string => {
+  const gradients: Record<string, string> = {
+    expressvpn: 'from-red-500 to-red-700',
+    nordvpn: 'from-blue-500 to-blue-700',
+    surfshark: 'from-cyan-400 to-blue-600',
+    cyberghost: 'from-yellow-400 to-orange-500',
+    pia: 'from-green-500 to-emerald-700',
+    protonvpn: 'from-purple-500 to-purple-700',
+    ipvanish: 'from-orange-500 to-red-600',
+    mullvad: 'from-blue-600 to-indigo-700',
+  };
+  return gradients[vpnId] || 'from-gray-500 to-gray-700';
+};
+
 interface VPNCardProps {
   vpn: {
     id: string;
@@ -61,7 +76,16 @@ export default function VPNCard({ vpn, rank, featured = false }: VPNCardProps) {
             <p className="text-blue-600 font-medium">{vpn.tagline}</p>
           </div>
           <div className="ml-4">
-            <img src={vpn.logo} alt={`${vpn.name} logo`} className="h-12 w-auto" />
+            {vpn.logo ? (
+              <img src={vpn.logo} alt={`${vpn.name} logo`} className="h-12 w-auto" onError={(e) => {
+                // Fallback to gradient badge if image fails
+                e.currentTarget.style.display = 'none';
+                e.currentTarget.nextElementSibling?.classList.remove('hidden');
+              }} />
+            ) : null}
+            <div className={`${vpn.logo ? 'hidden' : ''} h-12 w-12 rounded-lg bg-gradient-to-br ${getBrandGradient(vpn.id)} flex items-center justify-center text-white font-bold text-xl shadow-md`}>
+              {vpn.name.charAt(0)}
+            </div>
           </div>
         </div>
 

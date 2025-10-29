@@ -5,7 +5,7 @@
       "name": "Mullvad VPN",
       "tagline": "Best for Privacy & Anonymity",
       "rating": 4.8,
-      "logo": "/images/mullvad-logo.svg",
+      "logo": "",
       "affiliateLink": "https://mullvad.net/",
       "price": {
         "monthly": 5.50,
@@ -45,7 +45,7 @@
       "name": "IVPN",
       "tagline": "Privacy-First with Ethical Practices",
       "rating": 4.7,
-      "logo": "/images/ivpn-logo.svg",
+      "logo": "",
       "affiliateLink": "https://www.ivpn.net/",
       "price": {
         "monthly": 6.00,
@@ -85,7 +85,7 @@
       "name": "ProtonVPN",
       "tagline": "Swiss Privacy with Free Tier",
       "rating": 4.6,
-      "logo": "/images/protonvpn-logo.svg",
+      "logo": "",
       "affiliateLink": "https://protonvpn.com/",
       "price": {
         "monthly": 9.99,
@@ -125,7 +125,7 @@
       "name": "AirVPN",
       "tagline": "For Power Users & Torrenting",
       "rating": 4.5,
-      "logo": "/images/airvpn-logo.svg",
+      "logo": "",
       "affiliateLink": "https://airvpn.org/",
       "price": {
         "monthly": 9.00,
@@ -165,7 +165,7 @@
       "name": "Windscribe",
       "tagline": "Best Free Tier & Flexible Plans",
       "rating": 4.4,
-      "logo": "/images/windscribe-logo.svg",
+      "logo": "",
       "affiliateLink": "https://windscribe.com/?affid=YOUR_AFFILIATE_ID",
       "price": {
         "monthly": 9.00,
@@ -205,7 +205,7 @@
       "name": "OVPN",
       "tagline": "Swedish Transparency & Security",
       "rating": 4.5,
-      "logo": "/images/ovpn-logo.svg",
+      "logo": "",
       "affiliateLink": "https://www.ovpn.com/",
       "price": {
         "monthly": 9.00,
@@ -245,7 +245,7 @@
       "name": "AzireVPN",
       "tagline": "Simple, Fast, Honest",
       "rating": 4.3,
-      "logo": "/images/azirevpn-logo.svg",
+      "logo": "",
       "affiliateLink": "https://www.azirevpn.com/",
       "price": {
         "monthly": 5.00,
@@ -286,7 +286,7 @@
       "name": "TorGuard",
       "tagline": "Dedicated IPs & Torrenting",
       "rating": 4.2,
-      "logo": "/images/torguard-logo.svg",
+      "logo": "",
       "affiliateLink": "https://torguard.net/",
       "price": {
         "monthly": 9.99,

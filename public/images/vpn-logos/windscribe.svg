@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <defs>
+    <linearGradient id="windGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#00A0DC"/>
+      <stop offset="100%" style="stop-color:#0080B3"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background circle -->
+  <circle cx="100" cy="100" r="95" fill="url(#windGradient)"/>
+
+  <!-- "W" with wind effect -->
+  <path d="M 50 60 L 70 140 L 85 140 L 100 80 L 115 140 L 130 140 L 150 60 L 135 60 L 122.5 120 L 107.5 60 L 92.5 60 L 77.5 120 L 65 60 Z"
+        fill="white"/>
+
+  <!-- Wind swooshes -->
+  <path d="M 60 45 Q 70 40 80 45" stroke="white" stroke-width="3" fill="none" opacity="0.5"/>
+  <path d="M 120 45 Q 130 40 140 45" stroke="white" stroke-width="3" fill="none" opacity="0.5"/>
+</svg>

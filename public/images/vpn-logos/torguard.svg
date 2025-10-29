@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <defs>
+    <linearGradient id="torguardGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#28A745"/>
+      <stop offset="100%" style="stop-color:#218838"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background circle -->
+  <circle cx="100" cy="100" r="95" fill="url(#torguardGradient)"/>
+
+  <!-- Shield shape -->
+  <path d="M 100 50 L 140 70 L 140 110 C 140 130 120 145 100 150 C 80 145 60 130 60 110 L 60 70 Z"
+        fill="white"/>
+
+  <!-- "T" inside shield -->
+  <rect x="95" y="75" width="10" height="60" fill="url(#torguardGradient)"/>
+  <rect x="80" y="75" width="40" height="10" fill="url(#torguardGradient)"/>
+
+  <!-- Guard accent -->
+  <path d="M 100 135 L 105 140 L 95 140 Z" fill="url(#torguardGradient)"/>
+</svg>

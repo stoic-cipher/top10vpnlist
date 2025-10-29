@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <defs>
+    <linearGradient id="mullvadGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#D9534F"/>
+      <stop offset="100%" style="stop-color:#C9302C"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background circle -->
+  <circle cx="100" cy="100" r="95" fill="url(#mullvadGradient)"/>
+
+  <!-- Mole silhouette (Mullvad = "mole" in Swedish) -->
+  <ellipse cx="100" cy="110" rx="45" ry="35" fill="white"/>
+  <ellipse cx="100" cy="95" rx="38" ry="32" fill="white"/>
+  <circle cx="88" cy="90" r="5" fill="#D9534F"/>
+  <circle cx="112" cy="90" r="5" fill="#D9534F"/>
+  <ellipse cx="100" cy="100" rx="8" ry="6" fill="#D9534F"/>
+
+  <!-- Paws -->
+  <ellipse cx="70" cy="125" rx="12" ry="8" fill="white"/>
+  <ellipse cx="130" cy="125" rx="12" ry="8" fill="white"/>
+</svg>

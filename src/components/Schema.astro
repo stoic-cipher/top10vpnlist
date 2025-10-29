@@ -1,0 +1,110 @@
+---
+interface Props {
+  type: 'article' | 'review' | 'howto' | 'faq' | 'news' | 'tool';
+  data: any;
+}
+
+const { type, data } = Astro.props;
+
+const schemas = {
+  article: {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": data.title,
+    "description": data.description,
+    "author": {
+      "@type": "Organization",
+      "name": "Top10VPNList"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Top10VPNList",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://top10vpnlist.com/logo.png"
+      }
+    },
+    "datePublished": data.datePublished || new Date().toISOString().split('T')[0],
+    "dateModified": new Date().toISOString().split('T')[0],
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": `https://top10vpnlist.com${data.url}`
+    }
+  },
+
+  review: {
+    "@context": "https://schema.org",
+    "@type": "Review",
+    "itemReviewed": {
+      "@type": "SoftwareApplication",
+      "name": data.vpnName,
+      "applicationCategory": "SecurityApplication",
+      "operatingSystem": "Windows, macOS, iOS, Android, Linux"
+    },
+    "reviewRating": {
+      "@type": "Rating",
+      "ratingValue": data.rating,
+      "bestRating": "5.0",
+      "worstRating": "0"
+    },
+    "author": {
+      "@type": "Organization",
+      "name": "Top10VPNList"
+    },
+    "reviewBody": data.description
+  },
+
+  howto: {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": data.title,
+    "description": data.description,
+    "step": data.steps?.map((step: any, i: number) => ({
+      "@type": "HowToStep",
+      "name": step.name,
+      "text": step.text,
+      "url": `${data.url}#step${i + 1}`
+    }))
+  },
+
+  faq: {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": data.questions?.map((q: any) => ({
+      "@type": "Question",
+      "name": q.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": q.answer
+      }
+    }))
+  },
+
+  news: {
+    "@context": "https://schema.org",
+    "@type": "NewsArticle",
+    "headline": data.title,
+    "datePublished": data.datePublished,
+    "author": {
+      "@type": "Organization",
+      "name": "Top10VPNList"
+    }
+  },
+
+  tool: {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": data.title,
+    "applicationCategory": "SecurityApplication",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+};
+
+const schema = schemas[type];
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(schema)} />

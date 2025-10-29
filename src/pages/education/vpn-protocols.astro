@@ -1,0 +1,678 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Schema from '../../components/Schema.astro';
+
+const pageTitle = 'VPN Protocols Explained: WireGuard, OpenVPN, IKEv2 Compared (2025)';
+const pageDescription = 'Complete guide to VPN protocols: WireGuard vs OpenVPN vs IKEv2 vs PPTP. Speed tests, security analysis, and which protocol to use for privacy, streaming, or torrenting.';
+
+const dateModified = new Date().toISOString().split('T')[0];
+---
+
+<BaseLayout
+  title={pageTitle}
+  description={pageDescription}
+>
+  <Schema
+    type="article"
+    data={{
+      title: pageTitle,
+      description: pageDescription,
+      url: "/education/vpn-protocols",
+      datePublished: "2025-01-25",
+      dateModified
+    }}
+  />
+
+  <article class="max-w-4xl mx-auto px-4 py-12" itemscope itemtype="https://schema.org/Article">
+    <!-- Update Banner -->
+    <aside class="bg-blue-50 border-l-4 border-blue-600 p-4 mb-8 rounded">
+      <p class="text-sm text-gray-700">
+        <strong>🔄 Updated:</strong>
+        <time itemprop="dateModified" datetime={dateModified}>
+          {new Date(dateModified).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
+        </time> - Added WireGuard adoption statistics and post-quantum protocol development.
+      </p>
+    </aside>
+
+    <!-- Header -->
+    <header class="mb-10">
+      <h1 itemprop="headline" class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+        VPN Protocols Explained: The Complete Guide
+      </h1>
+      <p class="text-xl text-gray-600 leading-relaxed">
+        Not all VPN protocols are created equal. Some are fast but insecure. Others are rock-solid but slow. Here's everything you need to know about WireGuard, OpenVPN, IKEv2, and protocols to avoid.
+      </p>
+    </header>
+
+    <!-- Quick Comparison Table -->
+    <div class="overflow-x-auto mb-10">
+      <table class="w-full bg-white rounded-lg shadow">
+        <thead class="bg-gray-100">
+          <tr>
+            <th class="px-4 py-3 text-left font-bold text-gray-900">Protocol</th>
+            <th class="px-4 py-3 text-center font-bold text-gray-900">Speed</th>
+            <th class="px-4 py-3 text-center font-bold text-gray-900">Security</th>
+            <th class="px-4 py-3 text-center font-bold text-gray-900">Mobile</th>
+            <th class="px-4 py-3 text-center font-bold text-gray-900">Verdict</th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-gray-200">
+          <tr class="hover:bg-gray-50">
+            <td class="px-4 py-3 font-semibold text-gray-900">WireGuard</td>
+            <td class="px-4 py-3 text-center text-green-600">★★★★★</td>
+            <td class="px-4 py-3 text-center text-green-600">★★★★★</td>
+            <td class="px-4 py-3 text-center text-green-600">★★★★★</td>
+            <td class="px-4 py-3 text-center"><span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded font-semibold">BEST</span></td>
+          </tr>
+          <tr class="hover:bg-gray-50">
+            <td class="px-4 py-3 font-semibold text-gray-900">OpenVPN</td>
+            <td class="px-4 py-3 text-center text-yellow-600">★★★☆☆</td>
+            <td class="px-4 py-3 text-center text-green-600">★★★★★</td>
+            <td class="px-4 py-3 text-center text-yellow-600">★★★☆☆</td>
+            <td class="px-4 py-3 text-center"><span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded font-semibold">RELIABLE</span></td>
+          </tr>
+          <tr class="hover:bg-gray-50">
+            <td class="px-4 py-3 font-semibold text-gray-900">IKEv2/IPSec</td>
+            <td class="px-4 py-3 text-center text-green-600">★★★★☆</td>
+            <td class="px-4 py-3 text-center text-green-600">★★★★☆</td>
+            <td class="px-4 py-3 text-center text-green-600">★★★★★</td>
+            <td class="px-4 py-3 text-center"><span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded font-semibold">GOOD</span></td>
+          </tr>
+          <tr class="hover:bg-gray-50">
+            <td class="px-4 py-3 font-semibold text-gray-900">L2TP/IPSec</td>
+            <td class="px-4 py-3 text-center text-yellow-600">★★☆☆☆</td>
+            <td class="px-4 py-3 text-center text-yellow-600">★★★☆☆</td>
+            <td class="px-4 py-3 text-center text-yellow-600">★★★☆☆</td>
+            <td class="px-4 py-3 text-center"><span class="text-xs bg-yellow-100 text-yellow-800 px-2 py-1 rounded font-semibold">AVOID</span></td>
+          </tr>
+          <tr class="hover:bg-gray-50">
+            <td class="px-4 py-3 font-semibold text-gray-900">PPTP</td>
+            <td class="px-4 py-3 text-center text-green-600">★★★★★</td>
+            <td class="px-4 py-3 text-center text-red-600">★☆☆☆☆</td>
+            <td class="px-4 py-3 text-center text-green-600">★★★★☆</td>
+            <td class="px-4 py-3 text-center"><span class="text-xs bg-red-100 text-red-800 px-2 py-1 rounded font-semibold">NEVER</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Table of Contents -->
+    <nav class="bg-gray-50 rounded-lg p-6 mb-10" aria-label="Table of contents">
+      <h2 class="font-bold text-gray-900 mb-4 text-lg">Table of Contents</h2>
+      <ol class="space-y-2 text-gray-700">
+        <li><a href="#wireguard" class="hover:text-blue-600 hover:underline">1. WireGuard: The Modern Standard</a></li>
+        <li><a href="#openvpn" class="hover:text-blue-600 hover:underline">2. OpenVPN: The Veteran</a></li>
+        <li><a href="#ikev2" class="hover:text-blue-600 hover:underline">3. IKEv2/IPSec: The Mobile Champion</a></li>
+        <li><a href="#avoid" class="hover:text-blue-600 hover:underline">4. Protocols to Avoid (PPTP, L2TP)</a></li>
+        <li><a href="#proprietary" class="hover:text-blue-600 hover:underline">5. Proprietary Protocols (NordLynx, Lightway)</a></li>
+        <li><a href="#which" class="hover:text-blue-600 hover:underline">6. Which Protocol Should You Use?</a></li>
+      </ol>
+    </nav>
+
+    <!-- Content Sections -->
+    <div class="prose prose-lg max-w-none">
+
+      <section id="wireguard" class="mb-12">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">1. WireGuard: The Modern Standard</h2>
+
+        <div class="bg-gradient-to-r from-green-50 to-blue-50 border-2 border-green-500 rounded-xl p-6 mb-6">
+          <div class="flex items-start gap-4">
+            <div class="text-5xl">⚡</div>
+            <div>
+              <h3 class="text-2xl font-bold text-gray-900 mb-2">Why WireGuard is Taking Over</h3>
+              <p class="text-gray-700 leading-relaxed">
+                Released in 2020, WireGuard has become the go-to protocol for modern VPNs. It's faster, more secure, and simpler than older protocols—representing the biggest leap in VPN technology in 20 years.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <h3 class="text-2xl font-bold text-gray-900 mb-3">Technical Specs</h3>
+        <div class="bg-gray-50 rounded-lg p-6 mb-6">
+          <ul class="space-y-2 text-sm text-gray-700">
+            <li><strong>Encryption:</strong> ChaCha20 for symmetric encryption (faster than AES on mobile)</li>
+            <li><strong>Authentication:</strong> Poly1305 for message authentication</li>
+            <li><strong>Key Exchange:</strong> Curve25519 (elliptic curve Diffie-Hellman)</li>
+            <li><strong>Hashing:</strong> BLAKE2s and SipHash</li>
+            <li><strong>Code Size:</strong> ~4,000 lines vs. 400,000+ for OpenVPN</li>
+            <li><strong>Platform Support:</strong> Built into Linux kernel 5.6+, available for Windows, macOS, iOS, Android</li>
+          </ul>
+        </div>
+
+        <h3 class="text-2xl font-bold text-gray-900 mb-3">Advantages</h3>
+        <div class="space-y-3 mb-6">
+          <div class="flex items-start gap-3">
+            <span class="text-green-600 text-xl">✓</span>
+            <div>
+              <h4 class="font-bold text-gray-900">Blazing Fast</h4>
+              <p class="text-sm text-gray-700">
+                Typical speed loss: 5-15% (vs. 20-40% for OpenVPN). Can exceed 1 Gbps on gigabit connections. Outperforms OpenVPN by 3-5x in most benchmarks.
+              </p>
+            </div>
+          </div>
+
+          <div class="flex items-start gap-3">
+            <span class="text-green-600 text-xl">✓</span>
+            <div>
+              <h4 class="font-bold text-gray-900">Instant Reconnection</h4>
+              <p class="text-sm text-gray-700">
+                Switches between WiFi and cellular in ~1ms. Perfect for mobile users. OpenVPN takes seconds to minutes to reconnect.
+              </p>
+            </div>
+          </div>
+
+          <div class="flex items-start gap-3">
+            <span class="text-green-600 text-xl">✓</span>
+            <div>
+              <h4 class="font-bold text-gray-900">Battery Efficient</h4>
+              <p class="text-sm text-gray-700">
+                Uses significantly less CPU than OpenVPN, preserving phone battery. Ideal for always-on VPN connections.
+              </p>
+            </div>
+          </div>
+
+          <div class="flex items-start gap-3">
+            <span class="text-green-600 text-xl">✓</span>
+            <div>
+              <h4 class="font-bold text-gray-900">Auditable Security</h4>
+              <p class="text-sm text-gray-700">
+                Tiny codebase makes security audits easier. Uses modern cryptography (Curve25519, ChaCha20) instead of aging algorithms. Formally verified for correctness.
+              </p>
+            </div>
+          </div>
+
+          <div class="flex items-start gap-3">
+            <span class="text-green-600 text-xl">✓</span>
+            <div>
+              <h4 class="font-bold text-gray-900">Open Source & Free</h4>
+              <p class="text-sm text-gray-700">
+                Dual-licensed (GPLv2 and BSD). No patents or licensing fees. Built into the Linux kernel.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <h3 class="text-2xl font-bold text-gray-900 mb-3">Disadvantages</h3>
+        <div class="space-y-3 mb-6">
+          <div class="flex items-start gap-3">
+            <span class="text-red-600 text-xl">✗</span>
+            <div>
+              <h4 class="font-bold text-gray-900">Static IP Assignment</h4>
+              <p class="text-sm text-gray-700">
+                WireGuard assigns static internal IP addresses to clients. VPN providers work around this with custom implementations (e.g., NordVPN's "NordLynx" adds dynamic IPs).
+              </p>
+            </div>
+          </div>
+
+          <div class="flex items-start gap-3">
+            <span class="text-red-600 text-xl">✗</span>
+            <div>
+              <h4 class="font-bold text-gray-900">Less Mature Than OpenVPN</h4>
+              <p class="text-sm text-gray-700">
+                Only 5 years old vs. OpenVPN's 20+ years in production. Some edge cases and network configurations may have bugs.
+              </p>
+            </div>
+          </div>
+
+          <div class="flex items-start gap-3">
+            <span class="text-red-600 text-xl">✗</span>
+            <div>
+              <h4 class="font-bold text-gray-900">Harder to Obfuscate</h4>
+              <p class="text-sm text-gray-700">
+                WireGuard's protocol is easily identifiable, making it easier to block in censored countries (China, Russia). OpenVPN can be disguised as HTTPS traffic.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-blue-50 border-l-4 border-blue-600 rounded-lg p-6">
+          <h3 class="font-bold text-gray-900 mb-3">VPNs Using WireGuard</h3>
+          <p class="text-sm text-gray-700 mb-3">
+            <a href="/reviews/mullvad" class="text-blue-600 hover:underline font-semibold">Mullvad</a>,
+            <a href="/reviews/ivpn" class="text-blue-600 hover:underline font-semibold">IVPN</a>,
+            <a href="/reviews/azirevpn" class="text-blue-600 hover:underline font-semibold">AzireVPN</a> (WireGuard-only),
+            <a href="/reviews/protonvpn" class="text-blue-600 hover:underline font-semibold">ProtonVPN</a>,
+            <a href="/reviews/windscribe" class="text-blue-600 hover:underline font-semibold">Windscribe</a>
+          </p>
+          <p class="text-xs text-gray-600">
+            <strong>Recommendation:</strong> Use WireGuard unless you're in a censored country (use obfuscated OpenVPN instead).
+          </p>
+        </div>
+      </section>
+
+      <section id="openvpn" class="mb-12">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">2. OpenVPN: The Veteran</h2>
+
+        <p class="text-gray-700 leading-relaxed mb-6">
+          OpenVPN has been the industry standard since 2001. It's not the fastest, but it's the most battle-tested, configurable, and widely supported protocol. If you need reliability over speed, OpenVPN is still king.
+        </p>
+
+        <h3 class="text-2xl font-bold text-gray-900 mb-3">Technical Specs</h3>
+        <div class="bg-gray-50 rounded-lg p-6 mb-6">
+          <ul class="space-y-2 text-sm text-gray-700">
+            <li><strong>Encryption:</strong> AES-256-GCM (or ChaCha20 with newer builds)</li>
+            <li><strong>Authentication:</strong> SHA-256 or SHA-512 HMAC</li>
+            <li><strong>Key Exchange:</strong> RSA-2048 or higher</li>
+            <li><strong>Transport:</strong> TCP (reliable) or UDP (faster)</li>
+            <li><strong>Ports:</strong> Configurable (commonly 1194, 443, 80)</li>
+            <li><strong>Code Size:</strong> 400,000+ lines of C code</li>
+          </ul>
+        </div>
+
+        <h3 class="text-2xl font-bold text-gray-900 mb-3">Advantages</h3>
+        <div class="space-y-3 mb-6">
+          <div class="flex items-start gap-3">
+            <span class="text-green-600 text-xl">✓</span>
+            <div>
+              <h4 class="font-bold text-gray-900">Highly Configurable</h4>
+              <p class="text-sm text-gray-700">
+                Supports TCP and UDP, custom ports, proxy configurations, and advanced routing. Can bypass almost any firewall or network restriction.
+              </p>
+            </div>
+          </div>
+
+          <div class="flex items-start gap-3">
+            <span class="text-green-600 text-xl">✓</span>
+            <div>
+              <h4 class="font-bold text-gray-900">Battle-Tested Security</h4>
+              <p class="text-sm text-gray-700">
+                20+ years in production. Audited countless times. No critical vulnerabilities when configured properly. Trusted by governments and enterprises.
+              </p>
+            </div>
+          </div>
+
+          <div class="flex items-start gap-3">
+            <span class="text-green-600 text-xl">✓</span>
+            <div>
+              <h4 class="font-bold text-gray-900">Works Everywhere</h4>
+              <p class="text-sm text-gray-700">
+                Supported on every platform: Windows, macOS, Linux, iOS, Android, routers, even Raspberry Pi. Compatible with older systems.
+              </p>
+            </div>
+          </div>
+
+          <div class="flex items-start gap-3">
+            <span class="text-green-600 text-xl">✓</span>
+            <div>
+              <h4 class="font-bold text-gray-900">Obfuscation Support</h4>
+              <p class="text-sm text-gray-700">
+                Can disguise VPN traffic as HTTPS (port 443) to bypass censorship. Works in China, Russia, and other restrictive countries when WireGuard is blocked.
+              </p>
+            </div>
+          </div>
+
+          <div class="flex items-start gap-3">
+            <span class="text-green-600 text-xl">✓</span>
+            <div>
+              <h4 class="font-bold text-gray-900">Open Source</h4>
+              <p class="text-sm text-gray-700">
+                GPLv2 license. Transparent and community-audited. No hidden backdoors or proprietary code.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <h3 class="text-2xl font-bold text-gray-900 mb-3">Disadvantages</h3>
+        <div class="space-y-3 mb-6">
+          <div class="flex items-start gap-3">
+            <span class="text-red-600 text-xl">✗</span>
+            <div>
+              <h4 class="font-bold text-gray-900">Slower Than WireGuard</h4>
+              <p class="text-sm text-gray-700">
+                Typically 20-40% speed reduction vs. 5-15% for WireGuard. The large codebase and TLS overhead slow things down.
+              </p>
+            </div>
+          </div>
+
+          <div class="flex items-start gap-3">
+            <span class="text-red-600 text-xl">✗</span>
+            <div>
+              <h4 class="font-bold text-gray-900">Slow Reconnection</h4>
+              <p class="text-sm text-gray-700">
+                Takes 5-30 seconds to reconnect after network changes. Poor for mobile users switching between WiFi and cellular.
+              </p>
+            </div>
+          </div>
+
+          <div class="flex items-start gap-3">
+            <span class="text-red-600 text-xl">✗</span>
+            <div>
+              <h4 class="font-bold text-gray-900">Battery Drain</h4>
+              <p class="text-sm text-gray-700">
+                CPU-intensive encryption drains phone batteries faster than WireGuard. Not ideal for always-on VPN on mobile.
+              </p>
+            </div>
+          </div>
+
+          <div class="flex items-start gap-3">
+            <span class="text-red-600 text-xl">✗</span>
+            <div>
+              <h4 class="font-bold text-gray-900">Complex Configuration</h4>
+              <p class="text-sm text-gray-700">
+                Setting up OpenVPN manually is harder than WireGuard. More settings = more ways to misconfigure and create security holes.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-blue-50 border-l-4 border-blue-600 rounded-lg p-6">
+          <h3 class="font-bold text-gray-900 mb-3">When to Use OpenVPN</h3>
+          <ul class="text-sm text-gray-700 space-y-2">
+            <li>• You're in a country that blocks WireGuard (China, Russia)</li>
+            <li>• You need maximum compatibility with older devices/routers</li>
+            <li>• You want to disguise VPN traffic as HTTPS (port 443 TCP)</li>
+            <li>• Your VPN provider doesn't support WireGuard yet</li>
+          </ul>
+        </div>
+      </section>
+
+      <section id="ikev2" class="mb-12">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">3. IKEv2/IPSec: The Mobile Champion</h2>
+
+        <p class="text-gray-700 leading-relaxed mb-6">
+          IKEv2 (Internet Key Exchange version 2) paired with IPSec is a solid protocol developed by Microsoft and Cisco. It's faster than OpenVPN, more stable than L2TP, and excels at reconnecting on mobile devices.
+        </p>
+
+        <h3 class="text-2xl font-bold text-gray-900 mb-3">Technical Specs</h3>
+        <div class="bg-gray-50 rounded-lg p-6 mb-6">
+          <ul class="space-y-2 text-sm text-gray-700">
+            <li><strong>Encryption:</strong> AES-256 (via IPSec)</li>
+            <li><strong>Authentication:</strong> PSK (Pre-Shared Key) or digital certificates</li>
+            <li><strong>Key Exchange:</strong> Diffie-Hellman (Groups 14, 15, 16, etc.)</li>
+            <li><strong>Transport:</strong> UDP port 500, 4500</li>
+            <li><strong>Platform Support:</strong> Native on Windows, macOS, iOS; third-party apps on Android/Linux</li>
+          </ul>
+        </div>
+
+        <h3 class="text-2xl font-bold text-gray-900 mb-3">Advantages</h3>
+        <div class="space-y-3 mb-6">
+          <div class="flex items-start gap-3">
+            <span class="text-green-600 text-xl">✓</span>
+            <div>
+              <h4 class="font-bold text-gray-900">Fast Reconnection (MOBIKE)</h4>
+              <p class="text-sm text-gray-700">
+                IKEv2 supports MOBIKE (Mobility and Multihoming), which allows instant reconnection when switching networks. Perfect for iPhones switching between WiFi and cellular.
+              </p>
+            </div>
+          </div>
+
+          <div class="flex items-start gap-3">
+            <span class="text-green-600 text-xl">✓</span>
+            <div>
+              <h4 class="font-bold text-gray-900">Native Support on Apple Devices</h4>
+              <p class="text-sm text-gray-700">
+                Built into iOS and macOS—no third-party apps needed. Easy to configure via Settings.
+              </p>
+            </div>
+          </div>
+
+          <div class="flex items-start gap-3">
+            <span class="text-green-600 text-xl">✓</span>
+            <div>
+              <h4 class="font-bold text-gray-900">Faster Than OpenVPN</h4>
+              <p class="text-sm text-gray-700">
+                Outperforms OpenVPN in speed tests. Uses efficient algorithms and less overhead.
+              </p>
+            </div>
+          </div>
+
+          <div class="flex items-start gap-3">
+            <span class="text-green-600 text-xl">✓</span>
+            <div>
+              <h4 class="font-bold text-gray-900">Stable Connections</h4>
+              <p class="text-sm text-gray-700">
+                Less prone to random disconnections than OpenVPN. Uses UDP efficiently without TCP's retry delays.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <h3 class="text-2xl font-bold text-gray-900 mb-3">Disadvantages</h3>
+        <div class="space-y-3 mb-6">
+          <div class="flex items-start gap-3">
+            <span class="text-red-600 text-xl">✗</span>
+            <div>
+              <h4 class="font-bold text-gray-900">Limited Port Options</h4>
+              <p class="text-sm text-gray-700">
+                Uses UDP 500/4500, which can be blocked by firewalls. Can't disguise as HTTPS like OpenVPN.
+              </p>
+            </div>
+          </div>
+
+          <div class="flex items-start gap-3">
+            <span class="text-red-600 text-xl">✗</span>
+            <div>
+              <h4 class="font-bold text-gray-900">Developed by Microsoft/Cisco</h4>
+              <p class="text-sm text-gray-700">
+                Some privacy advocates distrust closed-source contributions from corporations with government ties. However, the protocol itself is open and auditable.
+              </p>
+            </div>
+          </div>
+
+          <div class="flex items-start gap-3">
+            <span class="text-red-600 text-xl">✗</span>
+            <div>
+              <h4 class="font-bold text-gray-900">Slower Than WireGuard</h4>
+              <p class="text-sm text-gray-700">
+                Still uses older cryptography and has more overhead than WireGuard.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-blue-50 border-l-4 border-blue-600 rounded-lg p-6">
+          <h3 class="font-bold text-gray-900 mb-3">When to Use IKEv2</h3>
+          <ul class="text-sm text-gray-700 space-y-2">
+            <li>• You're on iPhone/iPad and want native VPN support (no app needed)</li>
+            <li>• You frequently switch between WiFi and cellular and need instant reconnection</li>
+            <li>• Your VPN provider doesn't support WireGuard</li>
+            <li>• You need better battery life than OpenVPN but more maturity than WireGuard</li>
+          </ul>
+        </div>
+      </section>
+
+      <section id="avoid" class="mb-12">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">4. Protocols to Avoid (PPTP, L2TP)</h2>
+
+        <div class="bg-red-50 border-2 border-red-500 rounded-xl p-6 mb-6">
+          <div class="flex items-start gap-4">
+            <div class="text-5xl">⚠️</div>
+            <div>
+              <h3 class="text-2xl font-bold text-red-900 mb-2">Do Not Use These Protocols</h3>
+              <p class="text-gray-700 leading-relaxed">
+                PPTP and L2TP/IPSec are outdated, insecure, and should never be used for privacy. If your VPN only offers these, switch providers immediately.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <h3 class="text-2xl font-bold text-gray-900 mb-3">PPTP (Point-to-Point Tunneling Protocol)</h3>
+        <div class="bg-gray-50 rounded-lg p-6 mb-6">
+          <p class="text-gray-700 mb-4">
+            <strong>Status:</strong> <span class="text-red-600 font-bold">COMPLETELY BROKEN</span>
+          </p>
+          <p class="text-gray-700 mb-4">
+            PPTP was developed by Microsoft in 1996. It's fast because it has weak encryption (128-bit MPPE), but this weakness makes it trivially breakable by modern standards.
+          </p>
+          <div class="space-y-2 text-sm text-gray-700">
+            <p><strong>Security Flaws:</strong></p>
+            <ul class="list-disc list-inside ml-4 space-y-1">
+              <li>NSA can crack PPTP in real-time (leaked Snowden documents)</li>
+              <li>MS-CHAPv2 authentication can be brute-forced in hours</li>
+              <li>Vulnerable to MITM attacks</li>
+              <li>No forward secrecy (past sessions can be decrypted if key is compromised)</li>
+            </ul>
+          </div>
+          <p class="text-red-600 font-bold mt-4 text-sm">
+            ⛔ NEVER use PPTP for anything requiring privacy or security.
+          </p>
+        </div>
+
+        <h3 class="text-2xl font-bold text-gray-900 mb-3">L2TP/IPSec (Layer 2 Tunneling Protocol)</h3>
+        <div class="bg-gray-50 rounded-lg p-6 mb-6">
+          <p class="text-gray-700 mb-4">
+            <strong>Status:</strong> <span class="text-yellow-600 font-bold">DEPRECATED</span>
+          </p>
+          <p class="text-gray-700 mb-4">
+            L2TP (by itself) provides no encryption, so it's paired with IPSec. While more secure than PPTP, it's still obsolete and slow.
+          </p>
+          <div class="space-y-2 text-sm text-gray-700">
+            <p><strong>Why to Avoid:</strong></p>
+            <ul class="list-disc list-inside ml-4 space-y-1">
+              <li>Double encapsulation (L2TP + IPSec) creates significant overhead = slow speeds</li>
+              <li>Uses UDP port 500—easily blocked by firewalls and restrictive networks</li>
+              <li>Rumored to have NSA backdoors (unconfirmed but suspicious)</li>
+              <li>More complex configuration than modern protocols</li>
+            </ul>
+          </div>
+          <p class="text-yellow-600 font-bold mt-4 text-sm">
+            ⚠️ Use IKEv2/IPSec instead if you need IPSec-based VPN.
+          </p>
+        </div>
+      </section>
+
+      <section id="proprietary" class="mb-12">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">5. Proprietary Protocols (NordLynx, Lightway)</h2>
+
+        <p class="text-gray-700 leading-relaxed mb-6">
+          Some VPN companies develop custom protocols based on open-source foundations. These can offer advantages but come with trust considerations.
+        </p>
+
+        <div class="space-y-6">
+          <div class="bg-white border-2 border-blue-500 rounded-lg p-6">
+            <h3 class="font-bold text-gray-900 text-xl mb-3">NordLynx (NordVPN)</h3>
+            <p class="text-sm text-gray-700 mb-3">
+              <strong>Based on:</strong> WireGuard with custom double-NAT system
+            </p>
+            <p class="text-gray-700 mb-4">
+              NordVPN's implementation of WireGuard that adds dynamic IP address assignment to solve WireGuard's static IP problem. Combines WireGuard's speed with better privacy.
+            </p>
+            <div class="flex gap-2">
+              <span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded font-semibold">FAST</span>
+              <span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded font-semibold">SECURE</span>
+              <span class="text-xs bg-yellow-100 text-yellow-800 px-2 py-1 rounded font-semibold">PROPRIETARY</span>
+            </div>
+          </div>
+
+          <div class="bg-white border-2 border-purple-500 rounded-lg p-6">
+            <h3 class="font-bold text-gray-900 text-xl mb-3">Lightway (ExpressVPN)</h3>
+            <p class="text-sm text-gray-700 mb-3">
+              <strong>Based on:</strong> Custom protocol built from scratch
+            </p>
+            <p class="text-gray-700 mb-4">
+              ExpressVPN's proprietary protocol designed to compete with WireGuard. Claims to be faster and more battery-efficient than OpenVPN. Code has been open-sourced and audited.
+            </p>
+            <div class="flex gap-2">
+              <span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded font-semibold">FAST</span>
+              <span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded font-semibold">AUDITED</span>
+              <span class="text-xs bg-yellow-100 text-yellow-800 px-2 py-1 rounded font-semibold">PROPRIETARY</span>
+            </div>
+          </div>
+
+          <div class="bg-white border-2 border-green-500 rounded-lg p-6">
+            <h3 class="font-bold text-gray-900 text-xl mb-3">Catapult Hydra (Hotspot Shield)</h3>
+            <p class="text-sm text-gray-700 mb-3">
+              <strong>Based on:</strong> Custom protocol
+            </p>
+            <p class="text-gray-700 mb-4">
+              Closed-source protocol optimized for streaming. Faster than OpenVPN but lacks transparency. Owned by Pango (formerly AnchorFree), which has a questionable privacy history.
+            </p>
+            <div class="flex gap-2">
+              <span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded font-semibold">FAST</span>
+              <span class="text-xs bg-red-100 text-red-800 px-2 py-1 rounded font-semibold">CLOSED SOURCE</span>
+              <span class="text-xs bg-yellow-100 text-yellow-800 px-2 py-1 rounded font-semibold">AVOID</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-yellow-50 border-l-4 border-yellow-500 rounded-lg p-6 mt-6">
+          <h3 class="font-bold text-gray-900 mb-3">Should You Trust Proprietary Protocols?</h3>
+          <p class="text-gray-700 text-sm leading-relaxed">
+            It depends. NordLynx is based on audited WireGuard and adds minor privacy improvements—it's trustworthy. Lightway has been open-sourced and audited by Cure53—also acceptable. However, fully closed-source protocols like Catapult Hydra should be avoided. Stick to open protocols (WireGuard, OpenVPN) when possible.
+          </p>
+        </div>
+      </section>
+
+      <section id="which" class="mb-12">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">6. Which Protocol Should You Use?</h2>
+
+        <div class="space-y-6">
+          <div class="bg-gradient-to-r from-green-50 to-blue-50 border-2 border-green-500 rounded-xl p-6">
+            <h3 class="font-bold text-gray-900 text-xl mb-3">🏆 Best for Most Users: WireGuard</h3>
+            <p class="text-gray-700 mb-3">
+              Fastest, most secure, best battery life. Use WireGuard unless you have a specific reason not to.
+            </p>
+            <p class="text-sm text-gray-600">
+              <strong>Recommended VPNs:</strong> <a href="/reviews/mullvad" class="text-blue-600 hover:underline">Mullvad</a>, <a href="/reviews/ivpn" class="text-blue-600 hover:underline">IVPN</a>, <a href="/reviews/protonvpn" class="text-blue-600 hover:underline">ProtonVPN</a>
+            </p>
+          </div>
+
+          <div class="bg-blue-50 rounded-lg p-6">
+            <h3 class="font-bold text-gray-900 text-lg mb-3">🔒 Best for Censorship Bypass: OpenVPN (TCP Port 443)</h3>
+            <p class="text-gray-700 text-sm">
+              In China, Russia, or Iran where WireGuard is blocked, use OpenVPN disguised as HTTPS traffic.
+            </p>
+          </div>
+
+          <div class="bg-purple-50 rounded-lg p-6">
+            <h3 class="font-bold text-gray-900 text-lg mb-3">📱 Best for iPhones: IKEv2 or WireGuard</h3>
+            <p class="text-gray-700 text-sm">
+              IKEv2 is built into iOS (no app needed), but WireGuard is faster if you install the official app.
+            </p>
+          </div>
+
+          <div class="bg-yellow-50 rounded-lg p-6">
+            <h3 class="font-bold text-gray-900 text-lg mb-3">🎮 Best for Gaming: WireGuard</h3>
+            <p class="text-gray-700 text-sm">
+              Lowest latency (ping) due to fast handshake and efficient packet handling. <a href="/reviews/mullvad" class="text-blue-600 hover:underline">Mullvad</a> is excellent for gaming.
+            </p>
+          </div>
+
+          <div class="bg-orange-50 rounded-lg p-6">
+            <h3 class="font-bold text-gray-900 text-lg mb-3">📺 Best for Streaming: WireGuard or Proprietary Protocols</h3>
+            <p class="text-gray-700 text-sm">
+              Fast speeds needed for 4K streaming. <a href="/reviews/windscribe" class="text-blue-600 hover:underline">Windscribe</a> (WireGuard) and ExpressVPN (Lightway) work well for Netflix.
+            </p>
+          </div>
+
+          <div class="bg-green-50 rounded-lg p-6">
+            <h3 class="font-bold text-gray-900 text-lg mb-3">💼 Best for Work/Corporate VPNs: IKEv2 or OpenVPN</h3>
+            <p class="text-gray-700 text-sm">
+              Mature protocols with enterprise support. OpenVPN has the most configuration options for complex corporate networks.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA Section -->
+      <div class="bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl p-8 text-white text-center my-12">
+        <h3 class="text-2xl font-bold mb-3">Find a VPN with Modern Protocols</h3>
+        <p class="text-lg mb-6 opacity-90">
+          All our top-rated VPNs support WireGuard for maximum speed and security.
+        </p>
+        <a href="/" class="inline-block bg-white text-blue-600 px-8 py-3 rounded-xl font-bold hover:bg-gray-100 transition-colors">
+          Browse Top VPNs
+        </a>
+      </div>
+
+      <!-- Related Articles -->
+      <aside class="mt-12 bg-gray-50 rounded-lg p-6">
+        <h3 class="font-bold text-gray-900 mb-4">Related Articles</h3>
+        <ul class="space-y-2">
+          <li>
+            <a href="/education/how-vpns-work" class="text-blue-600 hover:underline">→ How VPNs Work: Complete Technical Guide</a>
+          </li>
+          <li>
+            <a href="/education/what-is-vpn" class="text-blue-600 hover:underline">→ What is a VPN? Beginner's Guide</a>
+          </li>
+          <li>
+            <a href="/tools/leak-test" class="text-blue-600 hover:underline">→ Test Your VPN Connection for Leaks</a>
+          </li>
+          <li>
+            <a href="/reviews/mullvad" class="text-blue-600 hover:underline">→ Mullvad VPN Review (WireGuard-First)</a>
+          </li>
+        </ul>
+      </aside>
+    </div>
+  </article>
+</BaseLayout>

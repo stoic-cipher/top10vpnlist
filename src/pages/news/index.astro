@@ -1,0 +1,165 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const pageTitle = 'VPN News & Privacy Updates | Top10VPNList';
+const pageDescription = 'Latest VPN security news, data breach alerts, privacy legislation updates, and cybersecurity threats. Stay informed about digital privacy in 2025.';
+
+// In production, this would fetch from a CMS or markdown files
+// For now, using placeholder structure
+const newsArticles = [
+  {
+    slug: 'example-data-breach-2025',
+    title: 'Major ISP Data Breach Exposes 10M User Records',
+    excerpt: 'A massive data breach at a leading internet service provider has compromised browsing histories, location data, and personal information of over 10 million users.',
+    date: '2025-01-28',
+    category: 'Data Breaches',
+    featured: true
+  },
+  // More articles would be added here as they're created
+];
+
+const categories = [
+  'All News',
+  'Data Breaches',
+  'Privacy Laws',
+  'VPN Security',
+  'Government Surveillance',
+  'Cybersecurity'
+];
+---
+
+<BaseLayout
+  title={pageTitle}
+  description={pageDescription}
+>
+  <div class="max-w-7xl mx-auto px-4 py-12">
+    <!-- Header -->
+    <header class="mb-12">
+      <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+        VPN & Privacy News
+      </h1>
+      <p class="text-xl text-gray-600 leading-relaxed max-w-3xl">
+        Stay updated on the latest VPN security vulnerabilities, data breaches, privacy legislation, and digital rights developments.
+      </p>
+    </header>
+
+    <!-- Category Filter -->
+    <div class="mb-8 flex flex-wrap gap-2">
+      {categories.map(cat => (
+        <button class="px-4 py-2 rounded-lg border-2 border-gray-300 hover:border-blue-500 hover:text-blue-600 transition-colors text-sm font-semibold">
+          {cat}
+        </button>
+      ))}
+    </div>
+
+    <!-- News Grid -->
+    {newsArticles.length > 0 ? (
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {newsArticles.map(article => (
+          <article class="bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow overflow-hidden border border-gray-200">
+            <div class="p-6">
+              <div class="flex items-center gap-2 mb-3">
+                <span class="text-xs bg-red-100 text-red-800 px-2 py-1 rounded font-semibold">
+                  {article.category}
+                </span>
+                <time class="text-xs text-gray-500">
+                  {new Date(article.date).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
+                </time>
+              </div>
+
+              <h2 class="text-xl font-bold text-gray-900 mb-3 hover:text-blue-600">
+                <a href={`/news/${article.slug}`}>{article.title}</a>
+              </h2>
+
+              <p class="text-gray-700 text-sm leading-relaxed mb-4">
+                {article.excerpt}
+              </p>
+
+              <a
+                href={`/news/${article.slug}`}
+                class="text-blue-600 hover:text-blue-700 font-semibold text-sm inline-flex items-center gap-1"
+              >
+                Read Full Story →
+              </a>
+            </div>
+          </article>
+        ))}
+      </div>
+    ) : (
+      <div class="bg-gray-50 rounded-lg p-12 text-center">
+        <div class="text-6xl mb-4">📰</div>
+        <h2 class="text-2xl font-bold text-gray-900 mb-3">News Section Coming Soon</h2>
+        <p class="text-gray-600 mb-6">
+          We're building a comprehensive news section to cover VPN security breaches, privacy legislation, and digital rights updates.
+        </p>
+        <a href="/" class="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors">
+          Browse VPN Reviews
+        </a>
+      </div>
+    )}
+
+    <!-- Newsletter Signup -->
+    <div class="mt-16 bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl p-8 text-white text-center">
+      <h3 class="text-2xl font-bold mb-3">Get Privacy News Delivered</h3>
+      <p class="text-lg mb-6 opacity-90">
+        Subscribe to our newsletter for weekly VPN security updates and privacy tips.
+      </p>
+      <form class="max-w-md mx-auto flex gap-2">
+        <input
+          type="email"
+          placeholder="your@email.com"
+          class="flex-1 px-4 py-3 rounded-lg text-gray-900"
+          required
+        />
+        <button
+          type="submit"
+          class="bg-white text-blue-600 px-6 py-3 rounded-lg font-bold hover:bg-gray-100 transition-colors"
+        >
+          Subscribe
+        </button>
+      </form>
+      <p class="text-xs mt-3 opacity-75">No spam. Unsubscribe anytime.</p>
+    </div>
+
+    <!-- Why This Matters -->
+    <section class="mt-16 max-w-3xl mx-auto">
+      <h2 class="text-3xl font-bold text-gray-900 mb-6">Why Privacy News Matters</h2>
+
+      <div class="space-y-6 text-gray-700">
+        <p class="leading-relaxed">
+          The digital privacy landscape changes daily. New data breaches expose millions of users, governments pass invasive surveillance laws, and VPN vulnerabilities are discovered regularly.
+        </p>
+
+        <p class="leading-relaxed">
+          Staying informed helps you make better decisions about which VPN to trust, when to update your security practices, and how to protect yourself from emerging threats.
+        </p>
+
+        <div class="bg-blue-50 border-l-4 border-blue-600 rounded-lg p-6">
+          <h3 class="font-bold text-gray-900 mb-3">What We Cover</h3>
+          <ul class="space-y-2 text-sm">
+            <li class="flex items-start gap-2">
+              <span class="text-blue-600">•</span>
+              <span><strong>Data Breaches:</strong> ISP leaks, VPN company breaches, and what they mean for your privacy</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-blue-600">•</span>
+              <span><strong>Privacy Legislation:</strong> New laws affecting VPN usage, data retention requirements, and digital rights</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-blue-600">•</span>
+              <span><strong>VPN Security:</strong> Vulnerabilities discovered in popular VPN services and protocols</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-blue-600">•</span>
+              <span><strong>Surveillance Updates:</strong> Government spying programs, 5/9/14 Eyes activities, and censorship news</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-blue-600">•</span>
+              <span><strong>Industry Changes:</strong> VPN company acquisitions, protocol updates, and market shifts</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </div>
+</BaseLayout>

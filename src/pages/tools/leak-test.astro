@@ -1,0 +1,295 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import LeakTestTool from '../../components/LeakTestTool.tsx';
+import Schema from '../../components/Schema.astro';
+
+const pageTitle = 'Free VPN Leak Test - Check Your VPN for IP, DNS & WebRTC Leaks';
+const pageDescription = 'Test your VPN connection for IPv4, IPv6, DNS, and WebRTC leaks in seconds. Free, privacy-focused tool with embeddable widget. No logging, 100% client-side.';
+---
+
+<BaseLayout
+  title={pageTitle}
+  description={pageDescription}
+>
+  <Schema
+    type="tool"
+    data={{
+      title: pageTitle,
+      description: pageDescription,
+      url: "/tools/leak-test"
+    }}
+  />
+
+  <div class="max-w-7xl mx-auto px-4 py-12">
+    <!-- Hero Section -->
+    <div class="text-center mb-12">
+      <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+        Free VPN Leak Test
+      </h1>
+      <p class="text-xl text-gray-600 max-w-3xl mx-auto mb-6">
+        Check if your VPN is leaking your real IP address, DNS requests, or WebRTC information. This comprehensive test takes ~5 seconds and is 100% private.
+      </p>
+      <div class="flex justify-center gap-4 text-sm text-gray-500">
+        <span class="flex items-center gap-1">
+          <svg class="w-5 h-5 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+          </svg>
+          No Registration Required
+        </span>
+        <span class="flex items-center gap-1">
+          <svg class="w-5 h-5 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+          </svg>
+          100% Client-Side
+        </span>
+        <span class="flex items-center gap-1">
+          <svg class="w-5 h-5 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+          </svg>
+          No Data Logged
+        </span>
+      </div>
+    </div>
+
+    <!-- Leak Test Tool Component -->
+    <LeakTestTool client:load />
+
+    <!-- Educational Content -->
+    <div class="mt-16 max-w-4xl mx-auto">
+      <h2 class="text-3xl font-bold text-gray-900 mb-6">Understanding VPN Leaks</h2>
+
+      <div class="space-y-8">
+        <section>
+          <h3 class="text-2xl font-bold text-gray-900 mb-3">What is a VPN Leak?</h3>
+          <p class="text-gray-700 leading-relaxed mb-4">
+            A VPN leak occurs when your real IP address, DNS requests, or other identifying information escapes your encrypted VPN tunnel. Even with a VPN active, certain configurations or browser features can expose your real location and identity to websites, ISPs, or third parties.
+          </p>
+          <p class="text-gray-700 leading-relaxed">
+            There are four main types of VPN leaks: <strong>IPv4 leaks</strong>, <strong>IPv6 leaks</strong>, <strong>DNS leaks</strong>, and <strong>WebRTC leaks</strong>. Our tool tests all four in a single scan.
+          </p>
+        </section>
+
+        <section>
+          <h3 class="text-2xl font-bold text-gray-900 mb-3">Types of VPN Leaks</h3>
+
+          <div class="grid md:grid-cols-2 gap-6">
+            <div class="bg-blue-50 rounded-lg p-6">
+              <h4 class="font-bold text-gray-900 mb-2 flex items-center gap-2">
+                <span class="text-2xl">🌐</span>
+                IPv4 & IPv6 Leaks
+              </h4>
+              <p class="text-sm text-gray-700">
+                Your real IP address (both IPv4 and IPv6) should be hidden when connected to a VPN. If either leaks, your true location and ISP are exposed. Many VPNs fail to properly tunnel IPv6 traffic.
+              </p>
+            </div>
+
+            <div class="bg-red-50 rounded-lg p-6">
+              <h4 class="font-bold text-gray-900 mb-2 flex items-center gap-2">
+                <span class="text-2xl">🚨</span>
+                WebRTC Leaks
+              </h4>
+              <p class="text-sm text-gray-700">
+                WebRTC (used for video calls) can expose your real IP through your browser, even with a VPN active. This is a browser-level leak that requires specific settings or extensions to prevent.
+              </p>
+            </div>
+
+            <div class="bg-yellow-50 rounded-lg p-6">
+              <h4 class="font-bold text-gray-900 mb-2 flex items-center gap-2">
+                <span class="text-2xl">🔍</span>
+                DNS Leaks
+              </h4>
+              <p class="text-sm text-gray-700">
+                DNS requests translate domain names to IP addresses. If these bypass your VPN tunnel and go to your ISP's DNS servers, your browsing history is visible to your ISP despite using a VPN.
+              </p>
+            </div>
+
+            <div class="bg-purple-50 rounded-lg p-6">
+              <h4 class="font-bold text-gray-900 mb-2 flex items-center gap-2">
+                <span class="text-2xl">📍</span>
+                Geolocation Leaks
+              </h4>
+              <p class="text-sm text-gray-700">
+                Even if your IP is hidden, browser APIs can reveal your real location through GPS, WiFi, or cellular data. Our tool shows your apparent location based on IP geolocation.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <h3 class="text-2xl font-bold text-gray-900 mb-3">How to Fix VPN Leaks</h3>
+
+          <div class="bg-gray-50 rounded-lg p-6">
+            <ol class="space-y-4 list-decimal list-inside text-gray-700">
+              <li>
+                <strong>Enable IPv6 Leak Protection</strong> in your VPN settings, or disable IPv6 entirely on your device
+              </li>
+              <li>
+                <strong>Use VPN DNS Servers</strong> instead of your ISP's DNS. Configure your VPN to handle all DNS requests
+              </li>
+              <li>
+                <strong>Enable WebRTC Leak Protection</strong> in your VPN app or use browser extensions like uBlock Origin (Privacy settings)
+              </li>
+              <li>
+                <strong>Use a Kill Switch</strong> to automatically disconnect internet if VPN drops, preventing unprotected traffic
+              </li>
+              <li>
+                <strong>Choose a proven VPN</strong> with independently audited no-logs policies and leak protection - see our <a href="/reviews/mullvad" class="text-blue-600 hover:underline">top VPN recommendations</a>
+              </li>
+            </ol>
+          </div>
+        </section>
+
+        <section>
+          <h3 class="text-2xl font-bold text-gray-900 mb-3">Why This Tool is Different</h3>
+
+          <div class="bg-gradient-to-r from-blue-50 to-purple-50 rounded-lg p-6 border-l-4 border-blue-600">
+            <ul class="space-y-3 text-gray-700">
+              <li class="flex items-start gap-2">
+                <svg class="w-6 h-6 text-blue-600 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                </svg>
+                <span><strong>100% Privacy-Focused:</strong> All tests run in your browser. We don't log IP addresses, timestamps, or any identifying information.</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <svg class="w-6 h-6 text-blue-600 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                </svg>
+                <span><strong>Comprehensive Testing:</strong> Tests all four leak types (IPv4, IPv6, DNS, WebRTC) in one scan, not just IP address.</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <svg class="w-6 h-6 text-blue-600 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                </svg>
+                <span><strong>No Registration Required:</strong> No email, no account, no tracking cookies. Just click and test.</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <svg class="w-6 h-6 text-blue-600 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                </svg>
+                <span><strong>Embeddable Widget:</strong> Security bloggers and privacy advocates can embed this tool on their own sites for free.</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <svg class="w-6 h-6 text-blue-600 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                </svg>
+                <span><strong>Actionable Results:</strong> Clear explanations and specific fixes for each leak type detected.</span>
+              </li>
+            </ul>
+          </div>
+        </section>
+
+        <section>
+          <h3 class="text-2xl font-bold text-gray-900 mb-3">Best VPNs with Leak Protection</h3>
+          <p class="text-gray-700 mb-4">
+            If our test detected leaks, your VPN may not be properly configured or lacks essential features. Here are VPNs we recommend with proven leak protection:
+          </p>
+
+          <div class="grid md:grid-cols-3 gap-4">
+            <a href="/reviews/mullvad" class="block bg-white rounded-lg p-6 shadow hover:shadow-lg transition-shadow border-2 border-transparent hover:border-blue-500">
+              <div class="flex items-center gap-3 mb-3">
+                <div class="h-12 w-12 rounded-lg bg-gradient-to-br from-red-500 to-red-700 flex items-center justify-center text-white font-bold text-xl">
+                  M
+                </div>
+                <div>
+                  <h4 class="font-bold text-gray-900">Mullvad</h4>
+                  <div class="text-yellow-500 text-sm">★★★★★ 4.8</div>
+                </div>
+              </div>
+              <p class="text-sm text-gray-600">
+                Gold standard for leak protection. Diskless servers, independently audited, used by Tor Project.
+              </p>
+            </a>
+
+            <a href="/reviews/ivpn" class="block bg-white rounded-lg p-6 shadow hover:shadow-lg transition-shadow border-2 border-transparent hover:border-blue-500">
+              <div class="flex items-center gap-3 mb-3">
+                <div class="h-12 w-12 rounded-lg bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center text-white font-bold text-xl">
+                  I
+                </div>
+                <div>
+                  <h4 class="font-bold text-gray-900">IVPN</h4>
+                  <div class="text-yellow-500 text-sm">★★★★★ 4.7</div>
+                </div>
+              </div>
+              <p class="text-sm text-gray-600">
+                Multi-hop connections, built-in anti-tracker, transparent ownership, independently audited.
+              </p>
+            </a>
+
+            <a href="/reviews/protonvpn" class="block bg-white rounded-lg p-6 shadow hover:shadow-lg transition-shadow border-2 border-transparent hover:border-blue-500">
+              <div class="flex items-center gap-3 mb-3">
+                <div class="h-12 w-12 rounded-lg bg-gradient-to-br from-purple-500 to-purple-700 flex items-center justify-center text-white font-bold text-xl">
+                  P
+                </div>
+                <div>
+                  <h4 class="font-bold text-gray-900">ProtonVPN</h4>
+                  <div class="text-yellow-500 text-sm">★★★★★ 4.6</div>
+                </div>
+              </div>
+              <p class="text-sm text-gray-600">
+                Swiss privacy laws, Secure Core routing, NetShield ad-blocker, generous free tier.
+              </p>
+            </a>
+          </div>
+
+          <div class="mt-6 text-center">
+            <a href="/find-vpn" class="inline-block bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-3 rounded-xl font-bold hover:from-blue-700 hover:to-purple-700 transition-all">
+              Take Our VPN Quiz →
+            </a>
+          </div>
+        </section>
+
+        <section>
+          <h3 class="text-2xl font-bold text-gray-900 mb-3">Frequently Asked Questions</h3>
+
+          <div class="space-y-4">
+            <details class="bg-gray-50 rounded-lg p-5">
+              <summary class="font-bold text-gray-900 cursor-pointer">How accurate is this VPN leak test?</summary>
+              <p class="text-gray-700 mt-3 text-sm">
+                Our test is highly accurate for detecting IPv4, IPv6, and WebRTC leaks. DNS leak detection is simplified (client-side only) but provides a good initial check. For comprehensive DNS testing, we recommend also using dnsleaktest.com after running our test.
+              </p>
+            </details>
+
+            <details class="bg-gray-50 rounded-lg p-5">
+              <summary class="font-bold text-gray-900 cursor-pointer">Do you log my IP address when I run the test?</summary>
+              <p class="text-gray-700 mt-3 text-sm">
+                No. This tool runs 100% in your browser (client-side JavaScript). We never see or log your IP address, timestamps, or test results. All API calls go directly from your browser to third-party services (ipify.org, ipapi.co) without passing through our servers.
+              </p>
+            </details>
+
+            <details class="bg-gray-50 rounded-lg p-5">
+              <summary class="font-bold text-gray-900 cursor-pointer">My VPN passed your test, but other sites say I'm leaking. Why?</summary>
+              <p class="text-gray-700 mt-3 text-sm">
+                Different tests check different leak vectors. Some advanced tests check for leaks during reconnection, kill switch failures, or specific DNS configurations. Our test covers the most common leak types, but we recommend running multiple tests from different tools for comprehensive security verification.
+              </p>
+            </details>
+
+            <details class="bg-gray-50 rounded-lg p-5">
+              <summary class="font-bold text-gray-900 cursor-pointer">Should I test with VPN on or off?</summary>
+              <p class="text-gray-700 mt-3 text-sm">
+                Test with your VPN <strong>connected</strong>. First, connect to your VPN, then run the test. The tool will show if your real IP is leaking through the VPN tunnel. You can also run it without VPN to see your real IP/location as a baseline.
+              </p>
+            </details>
+
+            <details class="bg-gray-50 rounded-lg p-5">
+              <summary class="font-bold text-gray-900 cursor-pointer">Can I embed this tool on my website?</summary>
+              <p class="text-gray-700 mt-3 text-sm">
+                Yes! Click "Copy Embed Code" button above the tool to get the iframe code. It's free to use on security blogs, privacy websites, or tech publications. We only ask that you keep the attribution link intact.
+              </p>
+            </details>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <!-- Related Tools CTA -->
+    <div class="mt-16 bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl p-8 text-white text-center">
+      <h3 class="text-2xl font-bold mb-3">Find the Perfect VPN for Your Needs</h3>
+      <p class="text-lg mb-6 opacity-90">
+        Take our 60-second quiz to get personalized VPN recommendations based on your privacy requirements.
+      </p>
+      <a href="/find-vpn" class="inline-block bg-white text-blue-600 px-8 py-3 rounded-xl font-bold hover:bg-gray-100 transition-colors">
+        Take the VPN Quiz
+      </a>
+    </div>
+  </div>
+</BaseLayout>

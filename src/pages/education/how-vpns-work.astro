@@ -1,0 +1,634 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Schema from '../../components/Schema.astro';
+
+const pageTitle = 'How VPNs Work: Complete Technical Explanation (2025)';
+const pageDescription = 'Understand VPN encryption, tunneling protocols, server architecture, and the complete journey your data takes through a VPN connection. Technical but accessible guide.';
+
+const dateModified = new Date().toISOString().split('T')[0];
+---
+
+<BaseLayout
+  title={pageTitle}
+  description={pageDescription}
+>
+  <Schema
+    type="article"
+    data={{
+      title: pageTitle,
+      description: pageDescription,
+      url: "/education/how-vpns-work",
+      datePublished: "2025-01-20",
+      dateModified
+    }}
+  />
+
+  <article class="max-w-4xl mx-auto px-4 py-12" itemscope itemtype="https://schema.org/Article">
+    <!-- Update Banner -->
+    <aside class="bg-blue-50 border-l-4 border-blue-600 p-4 mb-8 rounded">
+      <p class="text-sm text-gray-700">
+        <strong>🔄 Updated:</strong>
+        <time itemprop="dateModified" datetime={dateModified}>
+          {new Date(dateModified).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
+        </time> - Added WireGuard protocol details and post-quantum encryption discussion.
+      </p>
+    </aside>
+
+    <!-- Header -->
+    <header class="mb-10">
+      <h1 itemprop="headline" class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+        How VPNs Work: Complete Technical Explanation
+      </h1>
+      <p class="text-xl text-gray-600 leading-relaxed">
+        Ever wondered what actually happens when you click "Connect VPN"? Let's demystify VPN technology with a step-by-step technical explanation—accessible for beginners, detailed enough for power users.
+      </p>
+    </header>
+
+    <!-- Table of Contents -->
+    <nav class="bg-gray-50 rounded-lg p-6 mb-10" aria-label="Table of contents">
+      <h2 class="font-bold text-gray-900 mb-4 text-lg">Table of Contents</h2>
+      <ol class="space-y-2 text-gray-700">
+        <li><a href="#overview" class="hover:text-blue-600 hover:underline">1. VPN Overview: The 30,000-Foot View</a></li>
+        <li><a href="#step-by-step" class="hover:text-blue-600 hover:underline">2. Step-by-Step: Your Data's Journey</a></li>
+        <li><a href="#encryption" class="hover:text-blue-600 hover:underline">3. Understanding VPN Encryption</a></li>
+        <li><a href="#tunneling" class="hover:text-blue-600 hover:underline">4. Tunneling Protocols Explained</a></li>
+        <li><a href="#server-architecture" class="hover:text-blue-600 hover:underline">5. VPN Server Architecture</a></li>
+        <li><a href="#handshake" class="hover:text-blue-600 hover:underline">6. The VPN Handshake Process</a></li>
+        <li><a href="#kill-switch" class="hover:text-blue-600 hover:underline">7. Kill Switches and Leak Protection</a></li>
+        <li><a href="#limitations" class="hover:text-blue-600 hover:underline">8. What VPNs Can't Do</a></li>
+      </ol>
+    </nav>
+
+    <!-- Content Sections -->
+    <div class="prose prose-lg max-w-none">
+
+      <section id="overview" class="mb-12">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">VPN Overview: The 30,000-Foot View</h2>
+
+        <p class="text-gray-700 leading-relaxed mb-4">
+          A VPN (Virtual Private Network) creates an <strong>encrypted tunnel</strong> between your device and a VPN server. All your internet traffic flows through this tunnel, hiding your real IP address and encrypting your data from ISPs, governments, and hackers.
+        </p>
+
+        <div class="bg-gradient-to-r from-blue-50 to-purple-50 rounded-lg p-6 my-6 border-l-4 border-blue-600">
+          <h3 class="font-bold text-gray-900 mb-3">The Simple Analogy</h3>
+          <p class="text-gray-700 text-sm leading-relaxed mb-3">
+            Imagine your internet connection as a highway where every car (data packet) has your home address visible on the side. Anyone watching the highway can see where you came from and where you're going.
+          </p>
+          <p class="text-gray-700 text-sm leading-relaxed">
+            A VPN is like driving through an armored tunnel to a transfer station, where you switch to a rental car with a different license plate. The tunnel hides your original car, and the rental car hides your destination. Observers only see the transfer station, not your real home or destination.
+          </p>
+        </div>
+
+        <div class="bg-gray-50 rounded-lg p-6 my-6">
+          <h3 class="font-bold text-gray-900 mb-4">Key Components of a VPN Connection</h3>
+          <div class="grid md:grid-cols-2 gap-4">
+            <div class="flex items-start gap-3">
+              <span class="text-2xl">🔐</span>
+              <div>
+                <h4 class="font-bold text-gray-900">Encryption</h4>
+                <p class="text-sm text-gray-600">Scrambles your data so no one can read it in transit</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-3">
+              <span class="text-2xl">🚇</span>
+              <div>
+                <h4 class="font-bold text-gray-900">Tunneling Protocol</h4>
+                <p class="text-sm text-gray-600">The method used to create the encrypted tunnel</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-3">
+              <span class="text-2xl">🌐</span>
+              <div>
+                <h4 class="font-bold text-gray-900">VPN Server</h4>
+                <p class="text-sm text-gray-600">The exit point where your traffic enters the open internet</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-3">
+              <span class="text-2xl">🔑</span>
+              <div>
+                <h4 class="font-bold text-gray-900">Authentication</h4>
+                <p class="text-sm text-gray-600">Proves your identity to the VPN server before connecting</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="step-by-step" class="mb-12">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">Step-by-Step: Your Data's Journey</h2>
+
+        <p class="text-gray-700 leading-relaxed mb-6">
+          Let's walk through exactly what happens when you visit a website while connected to a VPN. We'll use the example of visiting <code>reddit.com</code>.
+        </p>
+
+        <div class="space-y-6">
+          <div class="bg-white border-2 border-blue-500 rounded-lg p-6">
+            <div class="flex items-center gap-3 mb-3">
+              <span class="bg-blue-600 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold">1</span>
+              <h3 class="font-bold text-gray-900 text-lg">You Click "reddit.com"</h3>
+            </div>
+            <p class="text-gray-700 text-sm ml-11">
+              Your browser creates a request: "Give me the webpage at reddit.com". This request includes your desired destination and needs a DNS lookup to find Reddit's IP address.
+            </p>
+          </div>
+
+          <div class="bg-white border-2 border-blue-500 rounded-lg p-6">
+            <div class="flex items-center gap-3 mb-3">
+              <span class="bg-blue-600 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold">2</span>
+              <h3 class="font-bold text-gray-900 text-lg">VPN Client Intercepts Request</h3>
+            </div>
+            <p class="text-gray-700 text-sm ml-11">
+              Before the request hits the internet, your VPN client intercepts it. Think of this as a security checkpoint that wraps your request in protective layers.
+            </p>
+          </div>
+
+          <div class="bg-white border-2 border-blue-500 rounded-lg p-6">
+            <div class="flex items-center gap-3 mb-3">
+              <span class="bg-blue-600 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold">3</span>
+              <h3 class="font-bold text-gray-900 text-lg">Encryption Applied</h3>
+            </div>
+            <p class="text-gray-700 text-sm ml-11 mb-3">
+              Your request is encrypted using AES-256 or ChaCha20 encryption (depending on protocol). This turns readable data into scrambled cipher text that looks like random noise to anyone intercepting it.
+            </p>
+            <code class="text-xs bg-gray-100 p-2 rounded block ml-11 overflow-x-auto">
+              Original: "GET reddit.com HTTP/1.1"<br/>
+              Encrypted: "X7k9mP2vQ8nR5wL3jH4sD9fG6..."
+            </code>
+          </div>
+
+          <div class="bg-white border-2 border-blue-500 rounded-lg p-6">
+            <div class="flex items-center gap-3 mb-3">
+              <span class="bg-blue-600 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold">4</span>
+              <h3 class="font-bold text-gray-900 text-lg">DNS Lookup via VPN</h3>
+            </div>
+            <p class="text-gray-700 text-sm ml-11">
+              The VPN server performs the DNS lookup on your behalf, asking "What's the IP address for reddit.com?" Your ISP never sees this DNS request—they only see encrypted traffic going to the VPN server.
+            </p>
+          </div>
+
+          <div class="bg-white border-2 border-blue-500 rounded-lg p-6">
+            <div class="flex items-center gap-3 mb-3">
+              <span class="bg-blue-600 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold">5</span>
+              <h3 class="font-bold text-gray-900 text-lg">Encrypted Tunnel to VPN Server</h3>
+            </div>
+            <p class="text-gray-700 text-sm ml-11">
+              Your encrypted request travels through the internet to the VPN server. To your ISP and any eavesdroppers, this looks like gibberish going to a single destination (the VPN server). They can't see you're trying to visit Reddit.
+            </p>
+          </div>
+
+          <div class="bg-white border-2 border-blue-500 rounded-lg p-6">
+            <div class="flex items-center gap-3 mb-3">
+              <span class="bg-blue-600 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold">6</span>
+              <h3 class="font-bold text-gray-900 text-lg">VPN Server Decrypts & Forwards</h3>
+            </div>
+            <p class="text-gray-700 text-sm ml-11">
+              The VPN server decrypts your request and sees "This user wants reddit.com". It forwards your request to Reddit, but the source IP address is now the <em>VPN server's IP</em>, not yours. Reddit sees a visitor from the VPN server's location, not your real location.
+            </p>
+          </div>
+
+          <div class="bg-white border-2 border-blue-500 rounded-lg p-6">
+            <div class="flex items-center gap-3 mb-3">
+              <span class="bg-blue-600 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold">7</span>
+              <h3 class="font-bold text-gray-900 text-lg">Reddit Responds</h3>
+            </div>
+            <p class="text-gray-700 text-sm ml-11">
+              Reddit sends its webpage back to the VPN server (thinking the VPN server is the visitor). The VPN server receives Reddit's response.
+            </p>
+          </div>
+
+          <div class="bg-white border-2 border-blue-500 rounded-lg p-6">
+            <div class="flex items-center gap-3 mb-3">
+              <span class="bg-blue-600 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold">8</span>
+              <h3 class="font-bold text-gray-900 text-lg">Return Journey (Encrypted)</h3>
+            </div>
+            <p class="text-gray-700 text-sm ml-11">
+              The VPN server encrypts Reddit's response and sends it back through the tunnel to you. Again, your ISP only sees encrypted data from the VPN server—they have no idea you're viewing Reddit.
+            </p>
+          </div>
+
+          <div class="bg-white border-2 border-green-500 rounded-lg p-6">
+            <div class="flex items-center gap-3 mb-3">
+              <span class="bg-green-600 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold">9</span>
+              <h3 class="font-bold text-gray-900 text-lg">Your Browser Displays Reddit</h3>
+            </div>
+            <p class="text-gray-700 text-sm ml-11">
+              Your VPN client decrypts the response and hands the Reddit webpage to your browser. You see Reddit's homepage, completely unaware of the encryption dance that just happened in milliseconds.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section id="encryption" class="mb-12">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">Understanding VPN Encryption</h2>
+
+        <p class="text-gray-700 leading-relaxed mb-6">
+          VPN encryption uses two main components: a <strong>cipher</strong> (the scrambling algorithm) and a <strong>key</strong> (the secret used to scramble/unscramble data).
+        </p>
+
+        <div class="bg-gray-50 rounded-lg p-6 mb-6">
+          <h3 class="font-bold text-gray-900 mb-4">Common VPN Ciphers</h3>
+
+          <div class="space-y-4">
+            <div class="border-l-4 border-blue-600 pl-4">
+              <h4 class="font-bold text-gray-900">AES-256 (Advanced Encryption Standard)</h4>
+              <p class="text-sm text-gray-700 mt-1 mb-2">
+                Military-grade encryption used by governments and banks. AES-256 uses 256-bit keys, making it virtually unbreakable with current technology. Breaking AES-256 by brute force would take billions of years with today's supercomputers.
+              </p>
+              <span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded font-semibold">HIGHLY SECURE</span>
+            </div>
+
+            <div class="border-l-4 border-purple-600 pl-4">
+              <h4 class="font-bold text-gray-900">ChaCha20</h4>
+              <p class="text-sm text-gray-700 mt-1 mb-2">
+                Developed by cryptographer Daniel J. Bernstein. Faster than AES on devices without hardware AES acceleration (most phones). Used by WireGuard protocol and Google Chrome's HTTPS.
+              </p>
+              <span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded font-semibold">HIGHLY SECURE</span>
+              <span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded font-semibold ml-2">MOBILE OPTIMIZED</span>
+            </div>
+
+            <div class="border-l-4 border-red-600 pl-4">
+              <h4 class="font-bold text-gray-900">Blowfish / 3DES</h4>
+              <p class="text-sm text-gray-700 mt-1 mb-2">
+                Older ciphers that are now considered weak. Blowfish uses 64-bit blocks (vulnerable to birthday attacks), and 3DES is slow and deprecated. Avoid VPNs still using these.
+              </p>
+              <span class="text-xs bg-red-100 text-red-800 px-2 py-1 rounded font-semibold">DEPRECATED</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-yellow-50 border-l-4 border-yellow-500 rounded-lg p-6">
+          <h3 class="font-bold text-gray-900 mb-3">🔮 Post-Quantum Encryption</h3>
+          <p class="text-gray-700 text-sm leading-relaxed">
+            Quantum computers threaten current encryption methods. Some VPNs like <a href="/reviews/mullvad" class="text-blue-600 hover:underline">Mullvad</a> and <a href="/reviews/protonvpn" class="text-blue-600 hover:underline">ProtonVPN</a> are experimenting with post-quantum key exchange to future-proof encryption against quantum attacks.
+          </p>
+        </div>
+      </section>
+
+      <section id="tunneling" class="mb-12">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">Tunneling Protocols Explained</h2>
+
+        <p class="text-gray-700 leading-relaxed mb-6">
+          The <strong>tunneling protocol</strong> determines how the encrypted tunnel is created and maintained. Different protocols make different trade-offs between speed, security, and compatibility.
+        </p>
+
+        <div class="space-y-6">
+          <div class="bg-white border-2 border-blue-500 rounded-lg p-6">
+            <div class="flex justify-between items-start mb-3">
+              <h3 class="font-bold text-gray-900 text-xl">WireGuard</h3>
+              <span class="text-xs bg-green-100 text-green-800 px-3 py-1 rounded-full font-semibold">RECOMMENDED</span>
+            </div>
+            <p class="text-gray-700 mb-3">
+              The newest and fastest protocol. WireGuard uses only 4,000 lines of code (vs 400,000+ for OpenVPN), making it easier to audit for security bugs. Connects in milliseconds, perfect for mobile devices switching networks.
+            </p>
+            <div class="grid md:grid-cols-2 gap-3 text-sm">
+              <div>
+                <strong class="text-gray-900">Speed:</strong> <span class="text-green-600 font-semibold">★★★★★</span>
+              </div>
+              <div>
+                <strong class="text-gray-900">Security:</strong> <span class="text-green-600 font-semibold">★★★★★</span>
+              </div>
+              <div>
+                <strong class="text-gray-900">Compatibility:</strong> <span class="text-yellow-600 font-semibold">★★★☆☆</span>
+              </div>
+              <div>
+                <strong class="text-gray-900">Battery Life:</strong> <span class="text-green-600 font-semibold">★★★★★</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-white border-2 border-gray-300 rounded-lg p-6">
+            <h3 class="font-bold text-gray-900 text-xl mb-3">OpenVPN</h3>
+            <p class="text-gray-700 mb-3">
+              The industry standard for 20+ years. Highly configurable and works on virtually any device. Open-source and well-audited. Slower than WireGuard but extremely reliable and widely supported.
+            </p>
+            <div class="grid md:grid-cols-2 gap-3 text-sm">
+              <div>
+                <strong class="text-gray-900">Speed:</strong> <span class="text-yellow-600 font-semibold">★★★☆☆</span>
+              </div>
+              <div>
+                <strong class="text-gray-900">Security:</strong> <span class="text-green-600 font-semibold">★★★★★</span>
+              </div>
+              <div>
+                <strong class="text-gray-900">Compatibility:</strong> <span class="text-green-600 font-semibold">★★★★★</span>
+              </div>
+              <div>
+                <strong class="text-gray-900">Battery Life:</strong> <span class="text-yellow-600 font-semibold">★★★☆☆</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-white border-2 border-gray-300 rounded-lg p-6">
+            <h3 class="font-bold text-gray-900 text-xl mb-3">IKEv2/IPSec</h3>
+            <p class="text-gray-700 mb-3">
+              Built into most operating systems. Excellent for mobile devices because it reconnects quickly when switching between WiFi and cellular. Slightly faster than OpenVPN but less configurable.
+            </p>
+            <div class="grid md:grid-cols-2 gap-3 text-sm">
+              <div>
+                <strong class="text-gray-900">Speed:</strong> <span class="text-green-600 font-semibold">★★★★☆</span>
+              </div>
+              <div>
+                <strong class="text-gray-900">Security:</strong> <span class="text-green-600 font-semibold">★★★★☆</span>
+              </div>
+              <div>
+                <strong class="text-gray-900">Compatibility:</strong> <span class="text-green-600 font-semibold">★★★★★</span>
+              </div>
+              <div>
+                <strong class="text-gray-900">Battery Life:</strong> <span class="text-green-600 font-semibold">★★★★☆</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-red-50 border-2 border-red-500 rounded-lg p-6">
+            <div class="flex justify-between items-start mb-3">
+              <h3 class="font-bold text-gray-900 text-xl">PPTP</h3>
+              <span class="text-xs bg-red-100 text-red-800 px-3 py-1 rounded-full font-semibold">AVOID</span>
+            </div>
+            <p class="text-gray-700 mb-3">
+              Obsolete protocol from the 1990s with known security vulnerabilities. Can be cracked in minutes by government agencies. Fast, but completely insecure. Never use PPTP for privacy.
+            </p>
+            <div class="grid md:grid-cols-2 gap-3 text-sm">
+              <div>
+                <strong class="text-gray-900">Speed:</strong> <span class="text-green-600 font-semibold">★★★★★</span>
+              </div>
+              <div>
+                <strong class="text-gray-900">Security:</strong> <span class="text-red-600 font-semibold">★☆☆☆☆</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="server-architecture" class="mb-12">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">VPN Server Architecture</h2>
+
+        <p class="text-gray-700 leading-relaxed mb-6">
+          Not all VPN servers are created equal. The physical infrastructure of VPN servers dramatically affects privacy and security.
+        </p>
+
+        <div class="space-y-6">
+          <div class="bg-green-50 border-l-4 border-green-600 rounded-lg p-6">
+            <h3 class="font-bold text-gray-900 mb-3 flex items-center gap-2">
+              <span class="text-2xl">💾</span>
+              Diskless (RAM-Only) Servers
+            </h3>
+            <p class="text-gray-700 mb-3">
+              These servers have no hard drives—everything runs from volatile RAM. When the server reboots, all data is permanently erased. This makes it impossible to seize data from the server or recover logs forensically.
+            </p>
+            <p class="text-sm text-gray-600">
+              <strong>Used by:</strong> <a href="/reviews/mullvad" class="text-blue-600 hover:underline">Mullvad</a>, <a href="/reviews/ovpn" class="text-blue-600 hover:underline">OVPN</a>, <a href="/reviews/ivpn" class="text-blue-600 hover:underline">IVPN</a>
+            </p>
+          </div>
+
+          <div class="bg-blue-50 border-l-4 border-blue-600 rounded-lg p-6">
+            <h3 class="font-bold text-gray-900 mb-3 flex items-center gap-2">
+              <span class="text-2xl">🏢</span>
+              Self-Owned vs. Rented Servers
+            </h3>
+            <p class="text-gray-700 mb-3">
+              Some VPNs own their physical hardware, while others rent from data centers. Owned servers provide better control (no third-party access), but rented servers allow faster global expansion and lower costs.
+            </p>
+            <p class="text-sm text-gray-600">
+              <strong>Fully self-owned:</strong> OVPN (owns all 400+ servers)<br/>
+              <strong>Hybrid:</strong> Most VPNs (own some, rent others)<br/>
+              <strong>Fully rented:</strong> Budget VPNs (higher third-party risk)
+            </p>
+          </div>
+
+          <div class="bg-purple-50 border-l-4 border-purple-600 rounded-lg p-6">
+            <h3 class="font-bold text-gray-900 mb-3 flex items-center gap-2">
+              <span class="text-2xl">🌐</span>
+              Virtual Locations
+            </h3>
+            <p class="text-gray-700 mb-3">
+              Some "server locations" aren't physically in that country. A VPN might advertise a server in Russia, but it's physically in Finland with a Russian IP address. This reduces costs but can be misleading.
+            </p>
+            <p class="text-sm text-gray-600">
+              <strong>Why it matters:</strong> Traffic still passes through the physical location's jurisdiction and infrastructure, not the virtual one. Transparent VPNs disclose which locations are virtual.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section id="handshake" class="mb-12">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">The VPN Handshake Process</h2>
+
+        <p class="text-gray-700 leading-relaxed mb-6">
+          Before any data flows through the VPN tunnel, your device and the VPN server must perform a <strong>handshake</strong>—a cryptographic negotiation to establish the encryption keys.
+        </p>
+
+        <div class="bg-gray-50 rounded-lg p-6">
+          <h3 class="font-bold text-gray-900 mb-4">OpenVPN Handshake (Simplified)</h3>
+          <ol class="space-y-3 text-gray-700 list-decimal list-inside">
+            <li>
+              <strong>Authentication:</strong> Your VPN client presents credentials (username/password or certificate) to the server to prove your identity.
+            </li>
+            <li>
+              <strong>TLS Handshake:</strong> Client and server use TLS (same as HTTPS) to exchange public keys and negotiate cipher suites.
+            </li>
+            <li>
+              <strong>Key Exchange:</strong> Both sides generate a shared secret using Diffie-Hellman key exchange. This secret is known only to your device and the VPN server—not even transmitted over the network.
+            </li>
+            <li>
+              <strong>Session Key Creation:</strong> The shared secret is used to derive symmetric encryption keys for the actual VPN session.
+            </li>
+            <li>
+              <strong>Tunnel Established:</strong> Encrypted tunnel is ready. All subsequent traffic uses the session keys for fast symmetric encryption (AES-256).
+            </li>
+          </ol>
+        </div>
+
+        <div class="bg-blue-50 rounded-lg p-6 mt-6">
+          <h3 class="font-bold text-gray-900 mb-4">WireGuard Handshake (Even Simpler)</h3>
+          <p class="text-gray-700 mb-3">
+            WireGuard uses a simpler handshake based on the Noise Protocol Framework. It completes in just 1 round trip (~1ms on fast connections vs. ~100ms+ for OpenVPN).
+          </p>
+          <ol class="space-y-2 text-gray-700 list-decimal list-inside text-sm">
+            <li>Client sends its public key + encrypted timestamp to server</li>
+            <li>Server responds with its public key + encrypted cookie</li>
+            <li>Both sides derive session keys from exchanged public keys</li>
+            <li>Tunnel ready—entire process takes ~1 millisecond</li>
+          </ol>
+        </div>
+      </section>
+
+      <section id="kill-switch" class="mb-12">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">Kill Switches and Leak Protection</h2>
+
+        <p class="text-gray-700 leading-relaxed mb-6">
+          Even the best VPN connection can drop unexpectedly. A <strong>kill switch</strong> prevents unprotected traffic from leaking when the VPN disconnects.
+        </p>
+
+        <div class="bg-red-50 border-2 border-red-500 rounded-lg p-6 mb-6">
+          <h3 class="font-bold text-red-900 mb-3">⚠️ What Happens Without a Kill Switch</h3>
+          <p class="text-gray-700 text-sm leading-relaxed">
+            If your VPN drops while downloading a torrent, your real IP address is immediately exposed to all torrent peers and tracker. You might not even notice the VPN disconnected, continuing to browse with your ISP seeing everything.
+          </p>
+        </div>
+
+        <div class="space-y-6">
+          <div class="border-l-4 border-blue-600 pl-6">
+            <h3 class="font-bold text-gray-900 mb-2">Application-Level Kill Switch</h3>
+            <p class="text-gray-700 text-sm mb-3">
+              The VPN app monitors the connection. If it detects a drop, it immediately closes specified applications (browser, torrent client, etc.) or blocks their internet access.
+            </p>
+            <p class="text-gray-600 text-xs">
+              <strong>Pros:</strong> Easy to configure, works per-app<br/>
+              <strong>Cons:</strong> Can be bypassed if VPN app crashes
+            </p>
+          </div>
+
+          <div class="border-l-4 border-green-600 pl-6">
+            <h3 class="font-bold text-gray-900 mb-2">System-Level Kill Switch (Firewall)</h3>
+            <p class="text-gray-700 text-sm mb-3">
+              Modifies your operating system's firewall rules to block all internet traffic except through the VPN tunnel. Even if the VPN app crashes, the firewall rules remain active.
+            </p>
+            <p class="text-gray-600 text-xs">
+              <strong>Pros:</strong> Cannot be bypassed, survives app crashes<br/>
+              <strong>Cons:</strong> Requires admin privileges, harder to troubleshoot
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section id="limitations" class="mb-12">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">What VPNs Can't Do</h2>
+
+        <p class="text-gray-700 leading-relaxed mb-6">
+          VPNs are powerful privacy tools, but they're not magic. Understanding their limitations is crucial for realistic expectations.
+        </p>
+
+        <div class="space-y-4">
+          <div class="bg-yellow-50 border-l-4 border-yellow-500 rounded-lg p-5">
+            <h3 class="font-bold text-gray-900 mb-2">❌ VPNs Don't Hide You from Websites You're Logged Into</h3>
+            <p class="text-gray-700 text-sm">
+              If you log into Facebook with a VPN, Facebook still knows it's you (you literally told them by logging in). VPNs hide your IP, not your account identity.
+            </p>
+          </div>
+
+          <div class="bg-yellow-50 border-l-4 border-yellow-500 rounded-lg p-5">
+            <h3 class="font-bold text-gray-900 mb-2">❌ VPNs Don't Protect Against Malware</h3>
+            <p class="text-gray-700 text-sm">
+              A VPN encrypts your connection, but it won't stop you from downloading malware or clicking phishing links. You still need antivirus software and common sense.
+            </p>
+          </div>
+
+          <div class="bg-yellow-50 border-l-4 border-yellow-500 rounded-lg p-5">
+            <h3 class="font-bold text-gray-900 mb-2">❌ VPNs Can't Guarantee Anonymity</h3>
+            <p class="text-gray-700 text-sm">
+              True anonymity requires Tor, not a VPN. VPNs provide privacy (hiding data from ISPs), but the VPN provider still sees your traffic. For whistleblowing or activism, use Tor or Tor over VPN.
+            </p>
+          </div>
+
+          <div class="bg-yellow-50 border-l-4 border-yellow-500 rounded-lg p-5">
+            <h3 class="font-bold text-gray-900 mb-2">❌ VPNs Don't Stop Browser Fingerprinting</h3>
+            <p class="text-gray-700 text-sm">
+              Websites can still identify you by your browser fingerprint (screen resolution, fonts, plugins, etc.). Combine VPNs with privacy-focused browsers like Firefox or Brave for better protection.
+            </p>
+          </div>
+
+          <div class="bg-yellow-50 border-l-4 border-yellow-500 rounded-lg p-5">
+            <h3 class="font-bold text-gray-900 mb-2">❌ Free VPNs Often Sell Your Data</h3>
+            <p class="text-gray-700 text-sm">
+              If you're not paying for the VPN, you're the product. Many free VPNs inject ads, log your browsing history, or sell your bandwidth to third parties. Stick to reputable free tiers like <a href="/reviews/protonvpn" class="text-blue-600 hover:underline">ProtonVPN</a>.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA Section -->
+      <div class="bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl p-8 text-white text-center my-12">
+        <h3 class="text-2xl font-bold mb-3">Ready to Choose a VPN?</h3>
+        <p class="text-lg mb-6 opacity-90">
+          Now that you understand how VPNs work, find the perfect one for your needs.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="/find-vpn" class="inline-block bg-white text-blue-600 px-8 py-3 rounded-xl font-bold hover:bg-gray-100 transition-colors">
+            Take Our VPN Quiz
+          </a>
+          <a href="/" class="inline-block bg-transparent border-2 border-white text-white px-8 py-3 rounded-xl font-bold hover:bg-white hover:text-blue-600 transition-colors">
+            Browse Top VPNs
+          </a>
+        </div>
+      </div>
+
+      <!-- FAQ Section -->
+      <section>
+        <h2 class="text-3xl font-bold text-gray-900 mb-6">Frequently Asked Questions</h2>
+
+        <div class="space-y-4">
+          <details class="bg-gray-50 rounded-lg p-5">
+            <summary class="font-bold text-gray-900 cursor-pointer">How much slower is a VPN compared to no VPN?</summary>
+            <p class="text-gray-700 mt-3 text-sm">
+              Modern protocols like WireGuard typically reduce speeds by only 5-15% on fast connections. Older protocols like OpenVPN can be slower (20-40% reduction). Distance to the VPN server matters more—connecting to a nearby server has minimal speed impact.
+            </p>
+          </details>
+
+          <details class="bg-gray-50 rounded-lg p-5">
+            <summary class="font-bold text-gray-900 cursor-pointer">Can my ISP see I'm using a VPN?</summary>
+            <p class="text-gray-700 mt-3 text-sm">
+              Yes, ISPs can detect VPN usage (they see encrypted traffic going to known VPN server IPs), but they can't see what you're doing through the VPN. In countries where VPNs are restricted, use obfuscated servers or Tor.
+            </p>
+          </details>
+
+          <details class="bg-gray-50 rounded-lg p-5">
+            <summary class="font-bold text-gray-900 cursor-pointer">Do VPNs work on all devices?</summary>
+            <p class="text-gray-700 mt-3 text-sm">
+              Most VPNs have apps for Windows, macOS, iOS, Android, and Linux. You can also install VPNs on routers to protect all devices on your network. Some VPNs support smart TVs, Fire Stick, and gaming consoles.
+            </p>
+          </details>
+
+          <details class="bg-gray-50 rounded-lg p-5">
+            <summary class="font-bold text-gray-900 cursor-pointer">What's the difference between VPN and proxy?</summary>
+            <p class="text-gray-700 mt-3 text-sm">
+              Proxies only reroute traffic (changing your IP) without encryption. VPNs encrypt all traffic and work system-wide. Proxies are faster but insecure—your ISP and others can still see your activity. VPNs provide true privacy.
+            </p>
+          </details>
+        </div>
+      </section>
+
+      <!-- Related Articles -->
+      <aside class="mt-12 bg-gray-50 rounded-lg p-6">
+        <h3 class="font-bold text-gray-900 mb-4">Related Articles</h3>
+        <ul class="space-y-2">
+          <li>
+            <a href="/education/what-is-vpn" class="text-blue-600 hover:underline">→ What is a VPN? Complete Beginner's Guide</a>
+          </li>
+          <li>
+            <a href="/tools/leak-test" class="text-blue-600 hover:underline">→ Free VPN Leak Test Tool</a>
+          </li>
+          <li>
+            <a href="/reviews/mullvad" class="text-blue-600 hover:underline">→ Mullvad VPN Review (Best for Privacy)</a>
+          </li>
+          <li>
+            <a href="/compare" class="text-blue-600 hover:underline">→ Compare Top VPNs Side-by-Side</a>
+          </li>
+        </ul>
+      </aside>
+    </div>
+  </article>
+
+  <!-- FAQ Schema -->
+  <Schema
+    type="faq"
+    data={{
+      questions: [
+        {
+          question: "How much slower is a VPN compared to no VPN?",
+          answer: "Modern protocols like WireGuard typically reduce speeds by only 5-15% on fast connections. Older protocols like OpenVPN can be slower (20-40% reduction). Distance to the VPN server matters more—connecting to a nearby server has minimal speed impact."
+        },
+        {
+          question: "Can my ISP see I'm using a VPN?",
+          answer: "Yes, ISPs can detect VPN usage (they see encrypted traffic going to known VPN server IPs), but they can't see what you're doing through the VPN. In countries where VPNs are restricted, use obfuscated servers or Tor."
+        },
+        {
+          question: "Do VPNs work on all devices?",
+          answer: "Most VPNs have apps for Windows, macOS, iOS, Android, and Linux. You can also install VPNs on routers to protect all devices on your network. Some VPNs support smart TVs, Fire Stick, and gaming consoles."
+        },
+        {
+          question: "What's the difference between VPN and proxy?",
+          answer: "Proxies only reroute traffic (changing your IP) without encryption. VPNs encrypt all traffic and work system-wide. Proxies are faster but insecure—your ISP and others can still see your activity. VPNs provide true privacy."
+        }
+      ]
+    }}
+  />
+</BaseLayout>

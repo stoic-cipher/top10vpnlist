@@ -1,16 +1,67 @@
 {
   "vpns": [
     {
+      "id": "nordvpn",
+      "name": "NordVPN",
+      "tagline": "Best Overall VPN for 2025",
+      "rating": 4.9,
+      "logo": "/images/vpn-logos/nordvpn.svg",
+      "affiliateLink": "https://nordvpn.com/?aff=134282",
+      "price": {
+        "monthly": 12.99,
+        "annual": 3.39,
+        "display": "$3.39/mo"
+      },
+      "pros": [
+        "Massive server network (6000+ servers in 111 countries)",
+        "NordLynx protocol (WireGuard-based, extremely fast)",
+        "Threat Protection blocks ads, trackers, and malware",
+        "Double VPN and Onion over VPN for extra security",
+        "24/7 live chat support",
+        "Works with Netflix, Disney+, BBC iPlayer, and all streaming services",
+        "Independently audited no-logs policy (PwC)",
+        "User-friendly apps for all platforms"
+      ],
+      "cons": [
+        "Can be more expensive on monthly plans",
+        "Some servers can be crowded during peak hours",
+        "Kill switch must be manually enabled on some platforms"
+      ],
+      "features": {
+        "servers": "6000+",
+        "countries": 111,
+        "devices": "10 simultaneous",
+        "protocols": [
+          "NordLynx (WireGuard)",
+          "OpenVPN",
+          "IKEv2"
+        ],
+        "encryption": "AES-256-GCM",
+        "killSwitch": true,
+        "splitTunneling": true,
+        "tor": true
+      },
+      "bestFor": [
+        "streaming",
+        "security",
+        "speed",
+        "beginners",
+        "all-around"
+      ],
+      "commission": 30,
+      "description": "NordVPN is the most complete VPN service for 2025, offering blazing-fast NordLynx speeds, a massive server network, and premium features like Threat Protection and Double VPN. With independently audited no-logs policy, 24/7 support, and reliable streaming unblocking, it's the best all-around choice for most users."
+    },
+    {
       "id": "mullvad",
       "name": "Mullvad VPN",
-      "tagline": "Best for Privacy & Anonymity",
+      "tagline": "Best for Maximum Privacy & Anonymity",
       "rating": 4.8,
-      "logo": "",
+      "logo": "/images/vpn-logos/mullvad.svg",
       "affiliateLink": "https://mullvad.net/",
       "price": {
-        "monthly": 5.50,
-        "annual": 5.50,
-        "display": "€5/mo"
+        "monthly": 5.5,
+        "annual": 5.5,
+        "display": "\u20ac5/mo"
       },
       "pros": [
         "Anonymous account numbers (no email required)",
@@ -19,7 +70,7 @@
         "Used by Tor Project and security researchers",
         "Diskless RAM-only servers",
         "Transparent ownership (Swedish company)",
-        "Flat €5/month pricing (no tricks)"
+        "Flat \u20ac5/month pricing (no tricks)"
       ],
       "cons": [
         "No live chat support (email only)",
@@ -30,26 +81,34 @@
         "servers": "900+",
         "countries": 45,
         "devices": "5 simultaneous",
-        "protocols": ["WireGuard", "OpenVPN"],
+        "protocols": [
+          "WireGuard",
+          "OpenVPN"
+        ],
         "encryption": "AES-256",
         "killSwitch": true,
         "splitTunneling": true,
         "tor": true
       },
-      "bestFor": ["privacy", "anonymity", "security", "journalists"],
+      "bestFor": [
+        "privacy",
+        "anonymity",
+        "security",
+        "journalists"
+      ],
       "commission": 0,
-      "description": "Mullvad is the gold standard for privacy-focused VPNs. With anonymous account numbers, cash/crypto payments, and independently audited no-logs policy, it's trusted by privacy researchers and the Tor Project. Simple €5/month pricing with no tricks—just privacy done right."
+      "description": "Mullvad is the gold standard for privacy-focused VPNs. With anonymous account numbers, cash/crypto payments, and independently audited no-logs policy, it's trusted by privacy researchers and the Tor Project. Simple \u20ac5/month pricing with no tricks\u2014just privacy done right."
     },
     {
       "id": "ivpn",
       "name": "IVPN",
       "tagline": "Privacy-First with Ethical Practices",
       "rating": 4.7,
-      "logo": "",
+      "logo": "/images/vpn-logos/ivpn.svg",
       "affiliateLink": "https://www.ivpn.net/",
       "price": {
-        "monthly": 6.00,
-        "annual": 5.00,
+        "monthly": 6.0,
+        "annual": 5.0,
         "display": "$5/mo"
       },
       "pros": [
@@ -70,13 +129,21 @@
         "servers": "200+",
         "countries": 37,
         "devices": "7 simultaneous",
-        "protocols": ["WireGuard", "OpenVPN"],
+        "protocols": [
+          "WireGuard",
+          "OpenVPN"
+        ],
         "encryption": "AES-256",
         "killSwitch": true,
         "splitTunneling": false,
         "tor": true
       },
-      "bestFor": ["privacy", "security", "transparency", "activists"],
+      "bestFor": [
+        "privacy",
+        "security",
+        "transparency",
+        "activists"
+      ],
       "commission": 0,
       "description": "IVPN combines Mullvad-level privacy with additional features like multi-hop and anti-tracking. Transparent about ownership, independently audited, and refuses to engage in shady marketing. Perfect for users who want privacy without compromise."
     },
@@ -85,7 +152,7 @@
       "name": "ProtonVPN",
       "tagline": "Swiss Privacy with Free Tier",
       "rating": 4.6,
-      "logo": "",
+      "logo": "/images/vpn-logos/protonvpn.svg",
       "affiliateLink": "https://protonvpn.com/",
       "price": {
         "monthly": 9.99,
@@ -110,13 +177,22 @@
         "servers": "6500+",
         "countries": 112,
         "devices": "10 simultaneous",
-        "protocols": ["WireGuard", "OpenVPN", "IKEv2"],
+        "protocols": [
+          "WireGuard",
+          "OpenVPN",
+          "IKEv2"
+        ],
         "encryption": "AES-256",
         "killSwitch": true,
         "splitTunneling": true,
         "tor": true
       },
-      "bestFor": ["free", "privacy", "streaming", "beginners"],
+      "bestFor": [
+        "free",
+        "privacy",
+        "streaming",
+        "beginners"
+      ],
       "commission": 15,
       "description": "ProtonVPN brings Swiss privacy to the masses with a genuinely free tier. Built by the ProtonMail team, it's open-source, audited, and trusted by privacy advocates. Secure Core multi-hop and NetShield ad-blocking make it feature-rich without compromising ethics."
     },
@@ -125,12 +201,12 @@
       "name": "AirVPN",
       "tagline": "For Power Users & Torrenting",
       "rating": 4.5,
-      "logo": "",
+      "logo": "/images/vpn-logos/airvpn.svg",
       "affiliateLink": "https://airvpn.org/",
       "price": {
-        "monthly": 9.00,
-        "annual": 4.50,
-        "display": "€4.50/mo"
+        "monthly": 9.0,
+        "annual": 4.5,
+        "display": "\u20ac4.50/mo"
       },
       "pros": [
         "Port forwarding included (all servers)",
@@ -150,13 +226,21 @@
         "servers": "400+",
         "countries": 23,
         "devices": "5 simultaneous",
-        "protocols": ["WireGuard", "OpenVPN"],
+        "protocols": [
+          "WireGuard",
+          "OpenVPN"
+        ],
         "encryption": "AES-256",
         "killSwitch": true,
         "splitTunneling": true,
         "tor": true
       },
-      "bestFor": ["torrenting", "advanced", "port-forwarding", "privacy"],
+      "bestFor": [
+        "torrenting",
+        "advanced",
+        "port-forwarding",
+        "privacy"
+      ],
       "commission": 0,
       "description": "AirVPN is beloved by power users for its advanced features and torrent-friendly stance. With port forwarding on all servers, highly configurable settings, and a 10+ year track record, it's perfect for users who want control over their VPN, not hand-holding."
     },
@@ -165,11 +249,11 @@
       "name": "Windscribe",
       "tagline": "Best Free Tier & Flexible Plans",
       "rating": 4.4,
-      "logo": "",
+      "logo": "/images/vpn-logos/windscribe.svg",
       "affiliateLink": "https://windscribe.com/?affid=YOUR_AFFILIATE_ID",
       "price": {
-        "monthly": 9.00,
-        "annual": 3.00,
+        "monthly": 9.0,
+        "annual": 3.0,
         "display": "$3/mo"
       },
       "pros": [
@@ -190,13 +274,22 @@
         "servers": "600+",
         "countries": 69,
         "devices": "Unlimited",
-        "protocols": ["WireGuard", "OpenVPN", "IKEv2"],
+        "protocols": [
+          "WireGuard",
+          "OpenVPN",
+          "IKEv2"
+        ],
         "encryption": "AES-256",
         "killSwitch": true,
         "splitTunneling": true,
         "tor": false
       },
-      "bestFor": ["free", "budget", "streaming", "flexibility"],
+      "bestFor": [
+        "free",
+        "budget",
+        "streaming",
+        "flexibility"
+      ],
       "commission": 20,
       "description": "Windscribe's generous 10GB free tier and unique build-a-plan option make it perfect for budget-conscious users. Despite 5 Eyes jurisdiction, it's transparent about what it logs (sessions/bandwidth, not activity) and offers solid streaming performance."
     },
@@ -205,12 +298,12 @@
       "name": "OVPN",
       "tagline": "Swedish Transparency & Security",
       "rating": 4.5,
-      "logo": "",
+      "logo": "/images/vpn-logos/ovpn.svg",
       "affiliateLink": "https://www.ovpn.com/",
       "price": {
-        "monthly": 9.00,
-        "annual": 6.00,
-        "display": "€6/mo"
+        "monthly": 9.0,
+        "annual": 6.0,
+        "display": "\u20ac6/mo"
       },
       "pros": [
         "Owns all physical servers (not rented)",
@@ -230,13 +323,21 @@
         "servers": "400+",
         "countries": 21,
         "devices": "5 simultaneous",
-        "protocols": ["WireGuard", "OpenVPN"],
+        "protocols": [
+          "WireGuard",
+          "OpenVPN"
+        ],
         "encryption": "AES-256",
         "killSwitch": true,
         "splitTunneling": false,
         "tor": false
       },
-      "bestFor": ["privacy", "security", "transparency", "europe"],
+      "bestFor": [
+        "privacy",
+        "security",
+        "transparency",
+        "europe"
+      ],
       "commission": 0,
       "description": "OVPN stands out by owning all physical servers and running them diskless (RAM-only). Based in Sweden with transparent ownership and no data retention laws, it's a solid Mullvad alternative for European users who want privacy without anonymity."
     },
@@ -245,12 +346,12 @@
       "name": "AzireVPN",
       "tagline": "Simple, Fast, Honest",
       "rating": 4.3,
-      "logo": "",
+      "logo": "/images/vpn-logos/azirevpn.svg",
       "affiliateLink": "https://www.azirevpn.com/",
       "price": {
-        "monthly": 5.00,
+        "monthly": 5.0,
         "annual": 3.75,
-        "display": "€3.75/mo"
+        "display": "\u20ac3.75/mo"
       },
       "pros": [
         "WireGuard-only (fastest protocol)",
@@ -271,13 +372,20 @@
         "servers": "40+",
         "countries": 9,
         "devices": "5 simultaneous",
-        "protocols": ["WireGuard"],
+        "protocols": [
+          "WireGuard"
+        ],
         "encryption": "ChaCha20",
         "killSwitch": true,
         "splitTunneling": false,
         "tor": false
       },
-      "bestFor": ["speed", "simplicity", "privacy", "europe"],
+      "bestFor": [
+        "speed",
+        "simplicity",
+        "privacy",
+        "europe"
+      ],
       "commission": 0,
       "description": "AzireVPN is refreshingly simple: WireGuard-only, honest about limitations, and affordable. Perfect for European users who want fast speeds without bloat. No marketing BS, just a solid VPN that does what it says."
     },
@@ -286,7 +394,7 @@
       "name": "TorGuard",
       "tagline": "Dedicated IPs & Torrenting",
       "rating": 4.2,
-      "logo": "",
+      "logo": "/images/vpn-logos/torguard.svg",
       "affiliateLink": "https://torguard.net/",
       "price": {
         "monthly": 9.99,
@@ -311,13 +419,21 @@
         "servers": "3000+",
         "countries": 50,
         "devices": "8 simultaneous",
-        "protocols": ["WireGuard", "OpenVPN"],
+        "protocols": [
+          "WireGuard",
+          "OpenVPN"
+        ],
         "encryption": "AES-256",
         "killSwitch": true,
         "splitTunneling": true,
         "tor": false
       },
-      "bestFor": ["torrenting", "dedicated-ip", "streaming", "china"],
+      "bestFor": [
+        "torrenting",
+        "dedicated-ip",
+        "streaming",
+        "china"
+      ],
       "commission": 20,
       "description": "TorGuard (despite the name, unrelated to Tor) excels at dedicated IPs and streaming. With stealth protocols that bypass VPN blocks, it's perfect for accessing content or torrenting. US jurisdiction is a privacy downside, but great for streaming use cases."
     }
@@ -327,61 +443,100 @@
       "slug": "privacy",
       "title": "Best VPNs for Privacy & Anonymity",
       "description": "Audited no-logs policies, anonymous payments, trusted by security researchers",
-      "topPicks": ["mullvad", "ivpn", "protonvpn"]
+      "topPicks": [
+        "nordvpn",
+        "mullvad",
+        "ivpn"
+      ]
     },
     {
       "slug": "torrenting",
       "title": "Best VPNs for Torrenting & P2P",
       "description": "Port forwarding, no bandwidth limits, proven no-logs policies",
-      "topPicks": ["airvpn", "mullvad", "torguard"]
+      "topPicks": [
+        "nordvpn",
+        "airvpn",
+        "mullvad"
+      ]
     },
     {
       "slug": "netflix",
       "title": "Best VPNs for Netflix & Streaming",
       "description": "Reliable unblocking, fast speeds, multiple regions",
-      "topPicks": ["windscribe", "torguard", "protonvpn"]
+      "topPicks": [
+        "nordvpn",
+        "windscribe",
+        "torguard"
+      ]
     },
     {
       "slug": "free",
       "title": "Best Free VPN Services",
       "description": "No credit card required, generous data caps, trustworthy providers",
-      "topPicks": ["protonvpn", "windscribe"]
+      "topPicks": [
+        "protonvpn",
+        "windscribe"
+      ]
     },
     {
       "slug": "advanced",
       "title": "Best VPNs for Power Users",
       "description": "Highly configurable, port forwarding, multi-hop routing",
-      "topPicks": ["airvpn", "ivpn", "ovpn"]
+      "topPicks": [
+        "nordvpn",
+        "airvpn",
+        "ivpn"
+      ]
     },
     {
       "slug": "gaming",
       "title": "Best VPNs for Gaming",
       "description": "Low ping, WireGuard protocol, DDoS protection",
-      "topPicks": ["mullvad", "azirevpn", "windscribe"]
+      "topPicks": [
+        "nordvpn",
+        "mullvad",
+        "azirevpn"
+      ]
     },
     {
       "slug": "streaming",
       "title": "Best VPNs for Streaming",
       "description": "Unlock global content libraries with reliable speeds",
-      "topPicks": ["windscribe", "protonvpn", "torguard"]
+      "topPicks": [
+        "nordvpn",
+        "windscribe",
+        "protonvpn"
+      ]
     },
     {
       "slug": "iphone",
       "title": "Best VPNs for iPhone",
       "description": "Native iOS apps, user-friendly, WireGuard support",
-      "topPicks": ["protonvpn", "mullvad", "windscribe"]
+      "topPicks": [
+        "nordvpn",
+        "protonvpn",
+        "mullvad"
+      ]
     },
     {
       "slug": "android",
       "title": "Best VPNs for Android",
       "description": "Open-source clients, kill switch, split tunneling",
-      "topPicks": ["mullvad", "protonvpn", "windscribe"]
+      "topPicks": [
+        "nordvpn",
+        "mullvad",
+        "protonvpn"
+      ]
     },
     {
       "slug": "firestick",
       "title": "Best VPNs for Fire TV Stick",
       "description": "Easy Fire TV installation, streaming optimized",
-      "topPicks": ["windscribe", "torguard", "protonvpn"]
+      "topPicks": [
+        "nordvpn",
+        "windscribe",
+        "torguard"
+      ]
     }
   ]
 }

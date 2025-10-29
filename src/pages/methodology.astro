@@ -1,0 +1,206 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Testing Methodology"
+  description="How we test and review VPNs. Our transparent process for evaluating privacy, speed, security, and reliability."
+>
+  <div class="max-w-4xl mx-auto px-4 py-16">
+    <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+      How We Test VPNs
+    </h1>
+
+    <div class="prose prose-lg max-w-none">
+      <p class="text-xl text-gray-700 mb-8">
+        Unlike most VPN review sites, we actually test VPNs. Here's our transparent methodology.
+      </p>
+
+      <h2 class="text-3xl font-bold text-gray-900 mt-12 mb-4">1. Privacy & Jurisdiction</h2>
+
+      <div class="bg-gray-50 rounded-lg p-6 mb-6">
+        <h3 class="text-xl font-bold text-gray-900 mb-3">What We Check:</h3>
+        <ul class="list-disc pl-6 space-y-2 text-gray-700">
+          <li><strong>Company jurisdiction</strong> - Is it in a 5/9/14 Eyes country?</li>
+          <li><strong>Ownership transparency</strong> - Who actually owns the company?</li>
+          <li><strong>No-logs policy</strong> - What do they claim, and has it been proven?</li>
+          <li><strong>Independent audits</strong> - Has Cure53, KPMG, or another auditor verified claims?</li>
+          <li><strong>Court cases</strong> - Have authorities requested data? What happened?</li>
+          <li><strong>Payment methods</strong> - Do they accept cash/crypto for anonymity?</li>
+        </ul>
+      </div>
+
+      <div class="bg-blue-50 border-l-4 border-blue-600 p-6 mb-8">
+        <p class="text-gray-800 font-medium mb-0">
+          <strong>Why this matters:</strong> A VPN in a 5 Eyes country (US, UK, Australia, etc.) can be compelled to log data and hand it over. We prioritize VPNs in privacy-friendly jurisdictions like Sweden, Switzerland, and Gibraltar.
+        </p>
+      </div>
+
+      <h2 class="text-3xl font-bold text-gray-900 mt-12 mb-4">2. Speed Testing</h2>
+
+      <div class="bg-gray-50 rounded-lg p-6 mb-6">
+        <h3 class="text-xl font-bold text-gray-900 mb-3">Our Testing Setup:</h3>
+        <ul class="list-disc pl-6 space-y-2 text-gray-700 mb-4">
+          <li>Baseline: 500 Mbps fiber connection (US West Coast)</li>
+          <li>Test servers: Nearest location, Europe, Asia</li>
+          <li>Protocol: WireGuard (when available), then OpenVPN</li>
+          <li>Tool: Ookla Speedtest, Fast.com, and manual file downloads</li>
+          <li>Tests: 5 runs per server, averaged results</li>
+        </ul>
+
+        <h3 class="text-xl font-bold text-gray-900 mb-3 mt-6">What We Measure:</h3>
+        <ul class="list-disc pl-6 space-y-2 text-gray-700">
+          <li><strong>Download speed</strong> - How fast can you stream/download?</li>
+          <li><strong>Upload speed</strong> - Important for video calls and cloud backups</li>
+          <li><strong>Ping/latency</strong> - Critical for gaming and real-time apps</li>
+          <li><strong>Consistency</strong> - Do speeds vary wildly between tests?</li>
+        </ul>
+      </div>
+
+      <div class="bg-yellow-50 border-l-4 border-yellow-500 p-6 mb-8">
+        <p class="text-gray-800 font-medium mb-0">
+          <strong>Note:</strong> Speed varies by location, time of day, and server load. We publish raw data so you can see the full picture, not just cherry-picked "best case" results.
+        </p>
+      </div>
+
+      <h2 class="text-3xl font-bold text-gray-900 mt-12 mb-4">3. Leak Testing</h2>
+
+      <div class="bg-gray-50 rounded-lg p-6 mb-6">
+        <h3 class="text-xl font-bold text-gray-900 mb-3">We Test For:</h3>
+        <ul class="list-disc pl-6 space-y-2 text-gray-700">
+          <li><strong>DNS leaks</strong> - Does your ISP still see what sites you visit?</li>
+          <li><strong>WebRTC leaks</strong> - Can websites see your real IP address?</li>
+          <li><strong>IPv6 leaks</strong> - Does IPv6 traffic bypass the VPN tunnel?</li>
+          <li><strong>Kill switch</strong> - Does it actually work when connection drops?</li>
+        </ul>
+      </div>
+
+      <p class="text-gray-700 mb-6">
+        <strong>Tools we use:</strong> ipleak.net, dnsleaktest.com, and manual packet inspection with Wireshark.
+      </p>
+
+      <h2 class="text-3xl font-bold text-gray-900 mt-12 mb-4">4. Streaming Performance</h2>
+
+      <div class="bg-gray-50 rounded-lg p-6 mb-6">
+        <h3 class="text-xl font-bold text-gray-900 mb-3">Services We Test:</h3>
+        <ul class="list-disc pl-6 space-y-2 text-gray-700">
+          <li>Netflix (US, UK, Japan libraries)</li>
+          <li>BBC iPlayer (UK)</li>
+          <li>Disney+ (US)</li>
+          <li>Amazon Prime Video (US)</li>
+          <li>Hulu (US)</li>
+        </ul>
+      </div>
+
+      <p class="text-gray-700 mb-6">
+        <strong>Reality check:</strong> Most VPNs work with Netflix, but reliability varies. We test monthly and update our recommendations when services stop working.
+      </p>
+
+      <h2 class="text-3xl font-bold text-gray-900 mt-12 mb-4">5. Features & Usability</h2>
+
+      <div class="bg-gray-50 rounded-lg p-6 mb-6">
+        <ul class="list-disc pl-6 space-y-2 text-gray-700">
+          <li><strong>App quality</strong> - Is it buggy? Easy to use?</li>
+          <li><strong>Platform support</strong> - Windows, Mac, Linux, mobile, routers?</li>
+          <li><strong>Simultaneous connections</strong> - How many devices?</li>
+          <li><strong>Split tunneling</strong> - Can you route specific apps outside VPN?</li>
+          <li><strong>Ad blocking</strong> - Built-in tracker/ad blocking?</li>
+          <li><strong>Multi-hop/double VPN</strong> - Extra privacy layer available?</li>
+          <li><strong>Port forwarding</strong> - For torrenting and remote access?</li>
+        </ul>
+      </div>
+
+      <h2 class="text-3xl font-bold text-gray-900 mt-12 mb-4">6. Customer Support</h2>
+
+      <div class="bg-gray-50 rounded-lg p-6 mb-6">
+        <ul class="list-disc pl-6 space-y-2 text-gray-700">
+          <li>Response time for email support</li>
+          <li>Live chat availability and quality</li>
+          <li>Quality of knowledge base/docs</li>
+          <li>Helpfulness of responses (not just copy-paste)</li>
+        </ul>
+      </div>
+
+      <h2 class="text-3xl font-bold text-gray-900 mt-12 mb-4">7. Value for Money</h2>
+
+      <p class="text-gray-700 mb-4">
+        We evaluate cost vs features, but <strong>cheaper isn't always better</strong>. Privacy and reliability are worth paying for.
+      </p>
+
+      <div class="bg-gray-50 rounded-lg p-6 mb-8">
+        <h3 class="text-xl font-bold text-gray-900 mb-3">Price Considerations:</h3>
+        <ul class="list-disc pl-6 space-y-2 text-gray-700">
+          <li>Monthly vs annual pricing</li>
+          <li>Refund policy and money-back guarantee</li>
+          <li>Free trial availability</li>
+          <li>Payment method flexibility (crypto, cash)</li>
+          <li>Cost per simultaneous connection</li>
+        </ul>
+      </div>
+
+      <h2 class="text-3xl font-bold text-gray-900 mt-12 mb-4">What We Don't Do</h2>
+
+      <div class="bg-red-50 border-l-4 border-red-500 p-6 mb-8">
+        <ul class="space-y-2 text-gray-800">
+          <li>❌ <strong>We don't fake test results</strong> - Every claim is backed by real testing</li>
+          <li>❌ <strong>We don't rank by commission rate</strong> - Privacy comes first</li>
+          <li>❌ <strong>We don't give perfect scores</strong> - Every VPN has trade-offs</li>
+          <li>❌ <strong>We don't accept paid placements</strong> - VPNs can't pay for higher rankings</li>
+          <li>❌ <strong>We don't copy competitors</strong> - Our reviews are original</li>
+        </ul>
+      </div>
+
+      <h2 class="text-3xl font-bold text-gray-900 mt-12 mb-4">Scoring System</h2>
+
+      <div class="grid md:grid-cols-2 gap-6 mb-8">
+        <div class="bg-gray-50 rounded-lg p-6">
+          <h3 class="text-xl font-bold text-gray-900 mb-3">Privacy (40%)</h3>
+          <p class="text-gray-700 text-sm">
+            Jurisdiction, ownership, audits, no-logs policy, payment methods
+          </p>
+        </div>
+
+        <div class="bg-gray-50 rounded-lg p-6">
+          <h3 class="text-xl font-bold text-gray-900 mb-3">Speed (25%)</h3>
+          <p class="text-gray-700 text-sm">
+            Download/upload speeds, latency, consistency across servers
+          </p>
+        </div>
+
+        <div class="bg-gray-50 rounded-lg p-6">
+          <h3 class="text-xl font-bold text-gray-900 mb-3">Security (20%)</h3>
+          <p class="text-gray-700 text-sm">
+            Encryption, protocols, leak protection, kill switch reliability
+          </p>
+        </div>
+
+        <div class="bg-gray-50 rounded-lg p-6">
+          <h3 class="text-xl font-bold text-gray-900 mb-3">Usability (15%)</h3>
+          <p class="text-gray-700 text-sm">
+            App quality, platform support, features, customer support
+          </p>
+        </div>
+      </div>
+
+      <h2 class="text-3xl font-bold text-gray-900 mt-12 mb-4">Continuous Testing</h2>
+
+      <p class="text-gray-700 mb-4">
+        VPN services change. Servers go offline, companies get acquired, policies change.
+      </p>
+
+      <p class="text-gray-700 mb-6">
+        We <strong>re-test VPNs quarterly</strong> and update reviews when significant changes occur. All reviews include a "Last Updated" date.
+      </p>
+
+      <div class="bg-blue-50 rounded-lg p-8 mt-12 text-center">
+        <h3 class="text-2xl font-bold text-gray-900 mb-4">See Our Raw Data</h3>
+        <p class="text-gray-700 mb-6">
+          We publish speed test results, leak test screenshots, and methodology details for every VPN we review.
+        </p>
+        <a href="/" class="inline-block bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors">
+          View VPN Reviews
+        </a>
+      </div>
+    </div>
+  </div>
+</BaseLayout>

@@ -1,0 +1,241 @@
+{
+  "vpns": [
+    {
+      "id": "expressvpn",
+      "name": "ExpressVPN",
+      "tagline": "Best Overall VPN",
+      "rating": 4.8,
+      "logo": "/images/expressvpn-logo.svg",
+      "affiliateLink": "https://www.expressvpn.com/?a=YOUR_AFFILIATE_ID",
+      "price": {
+        "monthly": 12.95,
+        "annual": 6.67,
+        "display": "$6.67/mo"
+      },
+      "pros": [
+        "Fastest speeds in our tests",
+        "Works with Netflix, Disney+, and all streaming services",
+        "Excellent privacy policy - no logs",
+        "24/7 live chat support",
+        "30-day money-back guarantee"
+      ],
+      "cons": [
+        "More expensive than competitors",
+        "No port forwarding"
+      ],
+      "features": {
+        "servers": "3000+",
+        "countries": 105,
+        "devices": "8 simultaneous",
+        "protocols": ["OpenVPN", "IKEv2", "Lightway"],
+        "encryption": "AES-256",
+        "killSwitch": true,
+        "splitTunneling": true,
+        "tor": false
+      },
+      "bestFor": ["streaming", "speed", "privacy", "overall"],
+      "commission": 40,
+      "description": "ExpressVPN consistently ranks as the fastest and most reliable VPN service. Based in the British Virgin Islands with a strict no-logs policy, it's our top pick for users who want premium performance and won't compromise on privacy."
+    },
+    {
+      "id": "nordvpn",
+      "name": "NordVPN",
+      "tagline": "Best Value VPN",
+      "rating": 4.7,
+      "logo": "/images/nordvpn-logo.svg",
+      "affiliateLink": "https://nordvpn.com/?aff=YOUR_AFFILIATE_ID",
+      "price": {
+        "monthly": 11.99,
+        "annual": 4.49,
+        "display": "$4.49/mo"
+      },
+      "pros": [
+        "Excellent price-to-performance ratio",
+        "Huge server network",
+        "Strong security features including double VPN",
+        "Works great with Netflix and torrenting",
+        "Threat Protection blocks ads and malware"
+      ],
+      "cons": [
+        "Desktop app can be slow to connect",
+        "Mixed speeds on distant servers"
+      ],
+      "features": {
+        "servers": "6300+",
+        "countries": 111,
+        "devices": "10 simultaneous",
+        "protocols": ["OpenVPN", "NordLynx", "IKEv2"],
+        "encryption": "AES-256",
+        "killSwitch": true,
+        "splitTunneling": true,
+        "tor": true
+      },
+      "bestFor": ["value", "security", "torrenting", "netflix"],
+      "commission": 30,
+      "description": "NordVPN offers premium features at mid-tier pricing. With over 6,300 servers and advanced features like Double VPN and Onion over VPN, it's perfect for privacy-conscious users who don't want to overspend."
+    },
+    {
+      "id": "surfshark",
+      "name": "Surfshark",
+      "tagline": "Best Budget VPN",
+      "rating": 4.6,
+      "logo": "/images/surfshark-logo.svg",
+      "affiliateLink": "https://surfshark.com/?ref=YOUR_AFFILIATE_ID",
+      "price": {
+        "monthly": 15.45,
+        "annual": 2.19,
+        "display": "$2.19/mo"
+      },
+      "pros": [
+        "Unlimited simultaneous devices",
+        "Incredible value for money",
+        "CleanWeb blocks ads and trackers",
+        "Works with all major streaming platforms",
+        "No-logs audited by independent firm"
+      ],
+      "cons": [
+        "Smaller server network",
+        "Speeds can vary on congested servers"
+      ],
+      "features": {
+        "servers": "3200+",
+        "countries": 100,
+        "devices": "Unlimited",
+        "protocols": ["OpenVPN", "WireGuard", "IKEv2"],
+        "encryption": "AES-256",
+        "killSwitch": true,
+        "splitTunneling": true,
+        "tor": false
+      },
+      "bestFor": ["budget", "families", "devices"],
+      "commission": 35,
+      "description": "Surfshark punches way above its weight class. With unlimited device connections and a price point under $2.50/month, it's perfect for families or users with multiple devices who refuse to compromise on security."
+    },
+    {
+      "id": "cyberghost",
+      "name": "CyberGhost",
+      "tagline": "Best for Beginners",
+      "rating": 4.4,
+      "logo": "/images/cyberghost-logo.svg",
+      "affiliateLink": "https://www.cyberghostvpn.com/?ref=YOUR_AFFILIATE_ID",
+      "price": {
+        "monthly": 12.99,
+        "annual": 2.03,
+        "display": "$2.03/mo"
+      },
+      "pros": [
+        "Extremely user-friendly interface",
+        "Massive server network",
+        "45-day money-back guarantee",
+        "Dedicated streaming and torrenting servers",
+        "Great for beginners"
+      ],
+      "cons": [
+        "Based in Romania (14 Eyes country)",
+        "Month-to-month plan is overpriced",
+        "Slower speeds on distant servers"
+      ],
+      "features": {
+        "servers": "11800+",
+        "countries": 100,
+        "devices": "7 simultaneous",
+        "protocols": ["OpenVPN", "WireGuard", "IKEv2"],
+        "encryption": "AES-256",
+        "killSwitch": true,
+        "splitTunneling": true,
+        "tor": false
+      },
+      "bestFor": ["beginners", "streaming", "value"],
+      "commission": 25,
+      "description": "CyberGhost's one-click interface makes it the most beginner-friendly VPN on the market. With specialized servers for streaming and torrenting, plus the longest money-back guarantee at 45 days, it's risk-free for new users."
+    },
+    {
+      "id": "pia",
+      "name": "Private Internet Access",
+      "tagline": "Best for Privacy",
+      "rating": 4.5,
+      "logo": "/images/pia-logo.svg",
+      "affiliateLink": "https://www.privateinternetaccess.com/?ref=YOUR_AFFILIATE_ID",
+      "price": {
+        "monthly": 11.99,
+        "annual": 2.03,
+        "display": "$2.03/mo"
+      },
+      "pros": [
+        "Proven no-logs policy in court",
+        "Open-source apps",
+        "Highly customizable security settings",
+        "Unlimited simultaneous devices",
+        "Port forwarding available"
+      ],
+      "cons": [
+        "Based in the US (5 Eyes country)",
+        "Inconsistent speeds",
+        "Less intuitive for beginners"
+      ],
+      "features": {
+        "servers": "35000+",
+        "countries": 84,
+        "devices": "Unlimited",
+        "protocols": ["OpenVPN", "WireGuard"],
+        "encryption": "AES-256",
+        "killSwitch": true,
+        "splitTunneling": true,
+        "tor": true
+      },
+      "bestFor": ["privacy", "advanced", "torrenting"],
+      "commission": 20,
+      "description": "PIA has proven its no-logs policy in court multiple times. With open-source apps, port forwarding, and unlimited devices, it's the gold standard for privacy purists and power users who want maximum control."
+    }
+  ],
+  "categories": [
+    {
+      "slug": "netflix",
+      "title": "Best VPN for Netflix",
+      "description": "Stream Netflix from anywhere without buffering or proxy errors",
+      "topPicks": ["expressvpn", "nordvpn", "surfshark"]
+    },
+    {
+      "slug": "torrenting",
+      "title": "Best VPN for Torrenting",
+      "description": "Fast, secure P2P with port forwarding and no logs",
+      "topPicks": ["nordvpn", "pia", "expressvpn"]
+    },
+    {
+      "slug": "gaming",
+      "title": "Best VPN for Gaming",
+      "description": "Low ping, fast speeds, and DDoS protection for gamers",
+      "topPicks": ["expressvpn", "nordvpn", "surfshark"]
+    },
+    {
+      "slug": "privacy",
+      "title": "Best VPN for Privacy",
+      "description": "Maximum anonymity with verified no-logs policies",
+      "topPicks": ["pia", "expressvpn", "nordvpn"]
+    },
+    {
+      "slug": "streaming",
+      "title": "Best VPN for Streaming",
+      "description": "Unlock global content libraries with reliable speeds",
+      "topPicks": ["expressvpn", "nordvpn", "surfshark"]
+    },
+    {
+      "slug": "iphone",
+      "title": "Best VPN for iPhone",
+      "description": "Top-rated iOS VPN apps for security and speed",
+      "topPicks": ["expressvpn", "nordvpn", "surfshark"]
+    },
+    {
+      "slug": "android",
+      "title": "Best VPN for Android",
+      "description": "Secure Android VPN apps with kill switch and split tunneling",
+      "topPicks": ["nordvpn", "surfshark", "expressvpn"]
+    },
+    {
+      "slug": "firestick",
+      "title": "Best VPN for Firestick",
+      "description": "Easy-to-install VPNs for Amazon Fire TV Stick",
+      "topPicks": ["expressvpn", "nordvpn", "cyberghost"]
+    }
+  ]
+}

@@ -1,0 +1,55 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import VPNQuiz from '../components/VPNQuiz';
+---
+
+<BaseLayout
+  title="Find Your Perfect VPN"
+  description="Take our 60-second quiz to discover which VPN best matches your needs, budget, and technical level."
+>
+  <div class="max-w-7xl mx-auto px-4 py-16">
+    <div class="text-center mb-12">
+      <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+        Find Your Perfect VPN in 60 Seconds
+      </h1>
+      <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+        Answer 4 quick questions and we'll recommend the VPN that best fits your needs—based on your priorities, not our commissions.
+      </p>
+    </div>
+
+    <VPNQuiz client:load />
+
+    <div class="mt-16 bg-gray-50 rounded-2xl p-8 max-w-4xl mx-auto">
+      <h2 class="text-2xl font-bold text-gray-900 mb-4 text-center">How This Works</h2>
+      <div class="grid md:grid-cols-3 gap-6 mt-8">
+        <div className="text-center">
+          <div className="text-4xl mb-3">📝</div>
+          <h3 className="font-bold text-gray-900 mb-2">Answer Questions</h3>
+          <p className="text-sm text-gray-600">Tell us what matters most to you</p>
+        </div>
+        <div className="text-center">
+          <div className="text-4xl mb-3">🎯</div>
+          <h3 className="font-bold text-gray-900 mb-2">Get Matched</h3>
+          <p className="text-sm text-gray-600">We analyze your answers objectively</p>
+        </div>
+        <div className="text-center">
+          <div className="text-4xl mb-3">✅</div>
+          <h3 className="font-bold text-gray-900 mb-2">Choose Confidently</h3>
+          <p className="text-sm text-gray-600">Read the full review and decide</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-12 text-center">
+      <p class="text-gray-600 mb-4">
+        Not sure? Browse all VPNs side-by-side
+      </p>
+      <a
+        href="/compare"
+        class="inline-block bg-gray-100 text-gray-800 px-6 py-3 rounded-lg font-semibold hover:bg-gray-200 transition-colors"
+      >
+        View Comparison Table
+      </a>
+    </div>
+  </div>
+</BaseLayout>

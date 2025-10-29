@@ -1,0 +1,85 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ComparisonTable from '../components/ComparisonTable';
+import vpnData from '../data/vpns.json';
+---
+
+<BaseLayout 
+  title="Compare VPNs Side by Side - Features, Pricing & Performance"
+  description="Compare the top VPN services side by side. See detailed specs, pricing, and features to find the perfect VPN for your needs."
+>
+  <!-- Hero -->
+  <section class="bg-gradient-to-br from-blue-600 to-blue-800 text-white py-16">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h1 class="text-5xl md:text-6xl font-bold mb-6">Compare VPNs</h1>
+      <p class="text-xl md:text-2xl text-blue-100 max-w-3xl mx-auto">
+        See how the top VPN services stack up side by side
+      </p>
+    </div>
+  </section>
+
+  <!-- Comparison Table -->
+  <section class="py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <ComparisonTable client:load vpns={vpnData.vpns} />
+    </div>
+  </section>
+
+  <!-- Detailed Cards -->
+  <section class="py-16 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl font-bold text-gray-900 mb-12 text-center">
+        Detailed Reviews
+      </h2>
+      
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {vpnData.vpns.slice(0, 6).map((vpn) => (
+          <a 
+            href={`/reviews/${vpn.id}`}
+            class="bg-white rounded-xl p-6 hover:shadow-xl transition-all duration-300 border border-gray-200 hover:border-blue-500 group"
+          >
+            <div class="flex items-center justify-between mb-4">
+              <h3 class="text-xl font-bold text-gray-900 group-hover:text-blue-600 transition-colors">
+                {vpn.name}
+              </h3>
+              <div class="flex items-center">
+                {[...Array(5)].map((_, i) => (
+                  <svg
+                    class={`w-4 h-4 ${
+                      i < Math.floor(vpn.rating) ? 'text-yellow-400' : 'text-gray-300'
+                    }`}
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                  >
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                  </svg>
+                ))}
+              </div>
+            </div>
+            
+            <p class="text-gray-600 mb-4">{vpn.tagline}</p>
+            
+            <div class="grid grid-cols-3 gap-2 text-center mb-4">
+              <div>
+                <div class="text-lg font-bold text-gray-900">{vpn.features.servers}</div>
+                <div class="text-xs text-gray-600">Servers</div>
+              </div>
+              <div>
+                <div class="text-lg font-bold text-gray-900">{vpn.features.countries}</div>
+                <div class="text-xs text-gray-600">Countries</div>
+              </div>
+              <div>
+                <div class="text-lg font-bold text-blue-600">{vpn.price.display}</div>
+                <div class="text-xs text-gray-600">Price</div>
+              </div>
+            </div>
+            
+            <span class="text-blue-600 font-semibold group-hover:underline">
+              Read Full Review →
+            </span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>

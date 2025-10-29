@@ -1,0 +1,244 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import VPNCard from '../../components/VPNCard';
+import vpnData from '../../data/vpns.json';
+
+export function getStaticPaths() {
+  return vpnData.categories.map((category) => {
+    const topVPNs = category.topPicks.map(vpnId => 
+      vpnData.vpns.find(v => v.id === vpnId)
+    ).filter(Boolean);
+    
+    return {
+      params: { category: category.slug },
+      props: { category, topVPNs },
+    };
+  });
+}
+
+const { category, topVPNs } = Astro.props;
+---
+
+<BaseLayout 
+  title={`${category.title} 2025 - Expert Tested & Reviewed`}
+  description={`${category.description}. See our top picks based on real-world testing.`}
+>
+  <!-- Hero -->
+  <section class="bg-gradient-to-br from-blue-600 to-blue-800 text-white py-16">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h1 class="text-5xl md:text-6xl font-bold mb-6">{category.title}</h1>
+      <p class="text-xl md:text-2xl text-blue-100 max-w-3xl mx-auto">
+        {category.description}
+      </p>
+    </div>
+  </section>
+
+  <!-- Why This Matters -->
+  <section class="py-12 bg-gray-50">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="bg-white rounded-2xl shadow-lg p-8">
+        {category.slug === 'netflix' && (
+          <>
+            <h2 class="text-2xl font-bold text-gray-900 mb-4">Why You Need a VPN for Netflix</h2>
+            <p class="text-gray-700 mb-4 leading-relaxed">
+              Netflix's library varies dramatically by country. The US Netflix has nearly 6,000 titles, 
+              while some countries have less than 1,000. A VPN lets you access any region's content library 
+              by changing your virtual location.
+            </p>
+            <p class="text-gray-700 leading-relaxed">
+              However, Netflix actively blocks most VPN IP addresses. The VPNs listed here are proven to 
+              consistently bypass Netflix's detection with fast speeds for HD/4K streaming.
+            </p>
+          </>
+        )}
+        
+        {category.slug === 'torrenting' && (
+          <>
+            <h2 class="text-2xl font-bold text-gray-900 mb-4">Why VPNs Are Essential for Torrenting</h2>
+            <p class="text-gray-700 mb-4 leading-relaxed">
+              Your ISP can see when you torrent and may throttle your speeds or send DMCA notices. 
+              Some ISPs have even terminated accounts for repeated torrenting.
+            </p>
+            <p class="text-gray-700 leading-relaxed">
+              A VPN encrypts your traffic and hides your real IP address, making your torrenting 
+              activity completely private. The best torrenting VPNs offer port forwarding for faster 
+              speeds and have verified no-logs policies.
+            </p>
+          </>
+        )}
+        
+        {category.slug === 'gaming' && (
+          <>
+            <h2 class="text-2xl font-bold text-gray-900 mb-4">How VPNs Improve Gaming</h2>
+            <p class="text-gray-700 mb-4 leading-relaxed">
+              While adding a VPN can increase ping slightly, quality gaming VPNs minimize this impact 
+              to 5-10ms. The benefits include DDoS protection, accessing geo-restricted games, 
+              and bypassing ISP throttling during peak hours.
+            </p>
+            <p class="text-gray-700 leading-relaxed">
+              The VPNs below have gaming-optimized servers and use WireGuard protocol for the lowest 
+              possible latency while maintaining security.
+            </p>
+          </>
+        )}
+        
+        {category.slug === 'privacy' && (
+          <>
+            <h2 class="text-2xl font-bold text-gray-900 mb-4">What Makes a True Privacy VPN</h2>
+            <p class="text-gray-700 mb-4 leading-relaxed">
+              Privacy-focused VPNs go beyond basic encryption. They must have: verified no-logs policies 
+              (ideally proven in court), jurisdiction outside surveillance alliances like 5/9/14 Eyes, 
+              RAM-only servers, and support for privacy tools like Tor.
+            </p>
+            <p class="text-gray-700 leading-relaxed">
+              The VPNs listed here have all passed independent security audits and have proven track records 
+              of protecting user privacy, even under legal pressure.
+            </p>
+          </>
+        )}
+
+        {!['netflix', 'torrenting', 'gaming', 'privacy'].includes(category.slug) && (
+          <>
+            <h2 class="text-2xl font-bold text-gray-900 mb-4">Our Testing Methodology</h2>
+            <p class="text-gray-700 leading-relaxed">
+              We test each VPN specifically for {category.title.toLowerCase()} use cases, 
+              measuring real-world performance, reliability, and ease of use over multiple weeks. 
+              Our rankings are based on extensive testing and are updated monthly.
+            </p>
+          </>
+        )}
+      </div>
+    </div>
+  </section>
+
+  <!-- Top Picks -->
+  <section class="py-16">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl font-bold text-gray-900 mb-8 text-center">
+        Our Top Picks
+      </h2>
+      
+      <div class="space-y-8">
+        {topVPNs.map((vpn, index) => (
+          <VPNCard 
+            client:load
+            vpn={vpn} 
+            rank={index + 1}
+            featured={index === 0}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Detailed Comparison -->
+  <section class="bg-gray-50 py-16">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl font-bold text-gray-900 mb-8 text-center">
+        Feature Comparison
+      </h2>
+      
+      <div class="bg-white rounded-2xl shadow-lg overflow-x-auto">
+        <table class="w-full">
+          <thead class="bg-gray-100">
+            <tr>
+              <th class="px-6 py-4 text-left text-gray-900 font-bold">Feature</th>
+              {topVPNs.map((vpn) => (
+                <th class="px-6 py-4 text-center text-gray-900 font-bold">{vpn.name}</th>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="border-t border-gray-200">
+              <td class="px-6 py-4 text-gray-900 font-medium">Price</td>
+              {topVPNs.map((vpn) => (
+                <td class="px-6 py-4 text-center text-blue-600 font-bold">{vpn.price.display}</td>
+              ))}
+            </tr>
+            <tr class="border-t border-gray-200 bg-gray-50">
+              <td class="px-6 py-4 text-gray-900 font-medium">Servers</td>
+              {topVPNs.map((vpn) => (
+                <td class="px-6 py-4 text-center text-gray-700">{vpn.features.servers}</td>
+              ))}
+            </tr>
+            <tr class="border-t border-gray-200">
+              <td class="px-6 py-4 text-gray-900 font-medium">Countries</td>
+              {topVPNs.map((vpn) => (
+                <td class="px-6 py-4 text-center text-gray-700">{vpn.features.countries}</td>
+              ))}
+            </tr>
+            <tr class="border-t border-gray-200 bg-gray-50">
+              <td class="px-6 py-4 text-gray-900 font-medium">Devices</td>
+              {topVPNs.map((vpn) => (
+                <td class="px-6 py-4 text-center text-gray-700">{vpn.features.devices}</td>
+              ))}
+            </tr>
+            <tr class="border-t border-gray-200">
+              <td class="px-6 py-4 text-gray-900 font-medium">Kill Switch</td>
+              {topVPNs.map((vpn) => (
+                <td class="px-6 py-4 text-center">
+                  {vpn.features.killSwitch ? (
+                    <span class="text-green-600 font-bold">✓</span>
+                  ) : (
+                    <span class="text-red-600 font-bold">✗</span>
+                  )}
+                </td>
+              ))}
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="py-16">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl font-bold text-gray-900 mb-8 text-center">
+        Frequently Asked Questions
+      </h2>
+      
+      <div class="space-y-6">
+        {category.slug === 'netflix' && (
+          <>
+            <div class="bg-white rounded-xl p-6 shadow-sm">
+              <h3 class="text-xl font-bold text-gray-900 mb-2">Is using a VPN for Netflix legal?</h3>
+              <p class="text-gray-700">
+                Yes, using a VPN is legal in most countries. However, it does violate Netflix's terms of service. 
+                In practice, Netflix simply blocks VPN IP addresses rather than banning accounts.
+              </p>
+            </div>
+            
+            <div class="bg-white rounded-xl p-6 shadow-sm">
+              <h3 class="text-xl font-bold text-gray-900 mb-2">Will Netflix ban my account for using a VPN?</h3>
+              <p class="text-gray-700">
+                No. Netflix has never banned an account for VPN use. When they detect a VPN, you'll simply 
+                see a proxy error. Disconnect the VPN or switch servers and you're good to go.
+              </p>
+            </div>
+          </>
+        )}
+        
+        {category.slug === 'torrenting' && (
+          <>
+            <div class="bg-white rounded-xl p-6 shadow-sm">
+              <h3 class="text-xl font-bold text-gray-900 mb-2">Can my ISP see I'm torrenting with a VPN?</h3>
+              <p class="text-gray-700">
+                No. When connected to a VPN, your ISP can only see encrypted data going to the VPN server. 
+                They cannot see what websites you visit or what you're downloading.
+              </p>
+            </div>
+            
+            <div class="bg-white rounded-xl p-6 shadow-sm">
+              <h3 class="text-xl font-bold text-gray-900 mb-2">Do I need port forwarding for torrenting?</h3>
+              <p class="text-gray-700">
+                Port forwarding improves connection to peers and speeds up downloads, but it's not required. 
+                Among our top picks, Private Internet Access offers port forwarding.
+              </p>
+            </div>
+          </>
+        )}
+      </div>
+    </div>
+  </section>
+</BaseLayout>

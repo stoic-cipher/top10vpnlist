@@ -1,0 +1,198 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import VPNCard from '../components/VPNCard';
+import vpnData from '../data/vpns.json';
+
+const topVPNs = vpnData.vpns.slice(0, 5);
+---
+
+<BaseLayout title="Best VPN Services 2025 - Expert Reviews & Comparisons">
+  <!-- Hero Section -->
+  <section class="bg-gradient-to-br from-blue-600 via-blue-700 to-blue-900 text-white py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-4xl mx-auto">
+        <h1 class="text-5xl md:text-6xl font-bold mb-6 leading-tight">
+          Find the Best VPN for Your Needs
+        </h1>
+        <p class="text-xl md:text-2xl text-blue-100 mb-8">
+          Independent reviews, speed tests, and expert recommendations. 
+          We've tested 50+ VPNs so you don't have to.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a 
+            href="#top-vpns" 
+            class="bg-white text-blue-700 px-8 py-4 rounded-xl font-bold text-lg hover:bg-blue-50 transition-colors shadow-xl"
+          >
+            See Our Top Picks
+          </a>
+          <a 
+            href="/compare" 
+            class="border-2 border-white text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-white/10 transition-colors"
+          >
+            Compare VPNs
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Trust Indicators -->
+  <section class="bg-white py-12 border-b border-gray-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+        <div>
+          <div class="text-4xl font-bold text-blue-600 mb-2">50+</div>
+          <div class="text-gray-600">VPNs Tested</div>
+        </div>
+        <div>
+          <div class="text-4xl font-bold text-blue-600 mb-2">500+</div>
+          <div class="text-gray-600">Speed Tests</div>
+        </div>
+        <div>
+          <div class="text-4xl font-bold text-blue-600 mb-2">100%</div>
+          <div class="text-gray-600">Independent</div>
+        </div>
+        <div>
+          <div class="text-4xl font-bold text-blue-600 mb-2">2025</div>
+          <div class="text-gray-600">Updated Daily</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Top VPNs -->
+  <section id="top-vpns" class="py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-4xl font-bold text-gray-900 mb-4">
+          Top 5 VPNs in 2025
+        </h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+          Based on speed tests, security audits, streaming performance, and real-world testing.
+          Updated October 2025.
+        </p>
+      </div>
+
+      <div class="space-y-8">
+        {topVPNs.map((vpn, index) => (
+          <VPNCard 
+            client:load 
+            vpn={vpn} 
+            rank={index + 1}
+            featured={index === 0}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Popular Categories -->
+  <section class="bg-gray-100 py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl font-bold text-gray-900 mb-8 text-center">
+        Find the Perfect VPN For
+      </h2>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {vpnData.categories.slice(0, 8).map((category) => (
+          <a 
+            href={`/best/${category.slug}`}
+            class="bg-white rounded-xl p-6 hover:shadow-xl transition-all duration-300 border border-gray-200 hover:border-blue-500 group"
+          >
+            <h3 class="text-xl font-bold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors">
+              {category.title.replace('Best VPN for ', '')}
+            </h3>
+            <p class="text-gray-600 text-sm mb-4">
+              {category.description}
+            </p>
+            <span class="text-blue-600 font-semibold group-hover:underline">
+              See Recommendations →
+            </span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Trust Us -->
+  <section class="py-16">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl font-bold text-gray-900 mb-8 text-center">
+        Why Trust Our Reviews?
+      </h2>
+      
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="text-center">
+          <div class="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+            <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-2">Real Testing</h3>
+          <p class="text-gray-600">
+            We actually test every VPN for speed, security, and reliability.
+          </p>
+        </div>
+        
+        <div class="text-center">
+          <div class="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+            <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-2">100% Independent</h3>
+          <p class="text-gray-600">
+            No VPN company owns us or influences our rankings.
+          </p>
+        </div>
+        
+        <div class="text-center">
+          <div class="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+            <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-2">Always Current</h3>
+          <p class="text-gray-600">
+            We update our reviews monthly with fresh speed tests.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quick FAQ -->
+  <section class="bg-gray-100 py-16">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl font-bold text-gray-900 mb-8 text-center">
+        Quick Answers
+      </h2>
+      
+      <div class="space-y-6">
+        <div class="bg-white rounded-xl p-6 shadow-sm">
+          <h3 class="text-xl font-bold text-gray-900 mb-2">What's the best VPN overall?</h3>
+          <p class="text-gray-700">
+            <strong>ExpressVPN</strong> consistently tops our tests for speed, reliability, and ease of use. 
+            It's the best all-around choice for most users.
+          </p>
+        </div>
+        
+        <div class="bg-white rounded-xl p-6 shadow-sm">
+          <h3 class="text-xl font-bold text-gray-900 mb-2">What's the best budget VPN?</h3>
+          <p class="text-gray-700">
+            <strong>Surfshark</strong> at $2.19/month offers unlimited devices and premium features 
+            at an unbeatable price point.
+          </p>
+        </div>
+        
+        <div class="bg-white rounded-xl p-6 shadow-sm">
+          <h3 class="text-xl font-bold text-gray-900 mb-2">Do free VPNs work?</h3>
+          <p class="text-gray-700">
+            We don't recommend free VPNs. They're slow, have data caps, and many sell your browsing data. 
+            Budget paid VPNs like Surfshark cost less than $3/month and are vastly superior.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

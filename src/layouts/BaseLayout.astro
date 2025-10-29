@@ -1,0 +1,159 @@
+---
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = "Expert VPN reviews, speed tests, and buying guides. Find the best VPN for Netflix, torrenting, privacy, and more." } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    
+    <title>{title} | Top10VPNList</title>
+    <meta name="description" content={description} />
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    
+    <!-- Schema.org -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "Top10VPNList",
+        "url": "https://top10vpnlist.com"
+      }
+    </script>
+  </head>
+  <body class="bg-gray-50 text-gray-900">
+    <!-- Navigation -->
+    <nav class="bg-white border-b border-gray-200 sticky top-0 z-50 shadow-sm">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-16">
+          <a href="/" class="flex items-center space-x-2">
+            <span class="text-2xl font-bold bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent">
+              Top10VPNList
+            </span>
+          </a>
+          
+          <div class="hidden md:flex items-center space-x-8">
+            <a href="/#top-vpns" class="text-gray-700 hover:text-blue-600 font-medium transition-colors">
+              Top VPNs
+            </a>
+            <a href="/best/netflix" class="text-gray-700 hover:text-blue-600 font-medium transition-colors">
+              Streaming
+            </a>
+            <a href="/best/torrenting" class="text-gray-700 hover:text-blue-600 font-medium transition-colors">
+              Torrenting
+            </a>
+            <a href="/best/gaming" class="text-gray-700 hover:text-blue-600 font-medium transition-colors">
+              Gaming
+            </a>
+            <a href="/compare" class="text-gray-700 hover:text-blue-600 font-medium transition-colors">
+              Compare
+            </a>
+          </div>
+
+          <div class="md:hidden">
+            <button id="mobile-menu-button" class="text-gray-700 hover:text-blue-600">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mobile Menu -->
+      <div id="mobile-menu" class="hidden md:hidden border-t border-gray-200">
+        <div class="px-4 py-4 space-y-3">
+          <a href="/#top-vpns" class="block text-gray-700 hover:text-blue-600 font-medium">Top VPNs</a>
+          <a href="/best/netflix" class="block text-gray-700 hover:text-blue-600 font-medium">Streaming</a>
+          <a href="/best/torrenting" class="block text-gray-700 hover:text-blue-600 font-medium">Torrenting</a>
+          <a href="/best/gaming" class="block text-gray-700 hover:text-blue-600 font-medium">Gaming</a>
+          <a href="/compare" class="block text-gray-700 hover:text-blue-600 font-medium">Compare</a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+      <slot />
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-300 mt-20">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+          <!-- Brand -->
+          <div>
+            <h3 class="text-white text-xl font-bold mb-4">Top10VPNList</h3>
+            <p class="text-sm text-gray-400">
+              Independent VPN reviews and recommendations since 2025.
+            </p>
+          </div>
+
+          <!-- Reviews -->
+          <div>
+            <h4 class="text-white font-semibold mb-4">VPN Reviews</h4>
+            <ul class="space-y-2 text-sm">
+              <li><a href="/reviews/expressvpn" class="hover:text-white transition-colors">ExpressVPN</a></li>
+              <li><a href="/reviews/nordvpn" class="hover:text-white transition-colors">NordVPN</a></li>
+              <li><a href="/reviews/surfshark" class="hover:text-white transition-colors">Surfshark</a></li>
+              <li><a href="/reviews/cyberghost" class="hover:text-white transition-colors">CyberGhost</a></li>
+              <li><a href="/reviews/pia" class="hover:text-white transition-colors">Private Internet Access</a></li>
+            </ul>
+          </div>
+
+          <!-- Categories -->
+          <div>
+            <h4 class="text-white font-semibold mb-4">Best VPNs For</h4>
+            <ul class="space-y-2 text-sm">
+              <li><a href="/best/netflix" class="hover:text-white transition-colors">Netflix</a></li>
+              <li><a href="/best/torrenting" class="hover:text-white transition-colors">Torrenting</a></li>
+              <li><a href="/best/gaming" class="hover:text-white transition-colors">Gaming</a></li>
+              <li><a href="/best/privacy" class="hover:text-white transition-colors">Privacy</a></li>
+              <li><a href="/best/streaming" class="hover:text-white transition-colors">Streaming</a></li>
+            </ul>
+          </div>
+
+          <!-- Legal -->
+          <div>
+            <h4 class="text-white font-semibold mb-4">Information</h4>
+            <ul class="space-y-2 text-sm">
+              <li><a href="/about" class="hover:text-white transition-colors">About Us</a></li>
+              <li><a href="/privacy" class="hover:text-white transition-colors">Privacy Policy</a></li>
+              <li><a href="/terms" class="hover:text-white transition-colors">Terms of Service</a></li>
+              <li><a href="/contact" class="hover:text-white transition-colors">Contact</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="border-t border-gray-800 mt-8 pt-8 text-sm text-gray-500 text-center">
+          <p>© 2025 Top10VPNList. All rights reserved.</p>
+          <p class="mt-2">
+            Affiliate Disclosure: We may earn commissions from purchases made through links on this site.
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Mobile menu toggle
+      const menuButton = document.getElementById('mobile-menu-button');
+      const mobileMenu = document.getElementById('mobile-menu');
+      
+      menuButton?.addEventListener('click', () => {
+        mobileMenu?.classList.toggle('hidden');
+      });
+    </script>
+  </body>
+</html>

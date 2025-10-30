@@ -29,7 +29,7 @@
       "features": {
         "servers": "900+",
         "countries": 45,
-        "devices": "5 simultaneous",
+        "devices": "5",
         "protocols": ["WireGuard", "OpenVPN"],
         "encryption": "AES-256",
         "killSwitch": true,
@@ -69,7 +69,7 @@
       "features": {
         "servers": "200+",
         "countries": 37,
-        "devices": "7 simultaneous",
+        "devices": "7",
         "protocols": ["WireGuard", "OpenVPN"],
         "encryption": "AES-256",
         "killSwitch": true,
@@ -109,7 +109,7 @@
       "features": {
         "servers": "6500+",
         "countries": 112,
-        "devices": "10 simultaneous",
+        "devices": "10",
         "protocols": ["WireGuard", "OpenVPN", "IKEv2"],
         "encryption": "AES-256",
         "killSwitch": true,
@@ -149,7 +149,7 @@
       "features": {
         "servers": "400+",
         "countries": 23,
-        "devices": "5 simultaneous",
+        "devices": "5",
         "protocols": ["WireGuard", "OpenVPN"],
         "encryption": "AES-256",
         "killSwitch": true,
@@ -229,7 +229,7 @@
       "features": {
         "servers": "400+",
         "countries": 21,
-        "devices": "5 simultaneous",
+        "devices": "5",
         "protocols": ["WireGuard", "OpenVPN"],
         "encryption": "AES-256",
         "killSwitch": true,
@@ -270,7 +270,7 @@
       "features": {
         "servers": "40+",
         "countries": 9,
-        "devices": "5 simultaneous",
+        "devices": "5",
         "protocols": ["WireGuard"],
         "encryption": "ChaCha20",
         "killSwitch": true,
@@ -310,7 +310,7 @@
       "features": {
         "servers": "3000+",
         "countries": 50,
-        "devices": "8 simultaneous",
+        "devices": "8",
         "protocols": ["WireGuard", "OpenVPN"],
         "encryption": "AES-256",
         "killSwitch": true,

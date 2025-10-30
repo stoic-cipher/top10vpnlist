@@ -30,7 +30,7 @@
       "features": {
         "servers": "6000+",
         "countries": 111,
-        "devices": "10 simultaneous",
+        "devices": "10",
         "protocols": [
           "NordLynx (WireGuard)",
           "OpenVPN",
@@ -80,7 +80,7 @@
       "features": {
         "servers": "900+",
         "countries": 45,
-        "devices": "5 simultaneous",
+        "devices": "5",
         "protocols": [
           "WireGuard",
           "OpenVPN"
@@ -128,7 +128,7 @@
       "features": {
         "servers": "200+",
         "countries": 37,
-        "devices": "7 simultaneous",
+        "devices": "7",
         "protocols": [
           "WireGuard",
           "OpenVPN"
@@ -176,7 +176,7 @@
       "features": {
         "servers": "6500+",
         "countries": 112,
-        "devices": "10 simultaneous",
+        "devices": "10",
         "protocols": [
           "WireGuard",
           "OpenVPN",
@@ -225,7 +225,7 @@
       "features": {
         "servers": "400+",
         "countries": 23,
-        "devices": "5 simultaneous",
+        "devices": "5",
         "protocols": [
           "WireGuard",
           "OpenVPN"
@@ -322,7 +322,7 @@
       "features": {
         "servers": "400+",
         "countries": 21,
-        "devices": "5 simultaneous",
+        "devices": "5",
         "protocols": [
           "WireGuard",
           "OpenVPN"
@@ -371,7 +371,7 @@
       "features": {
         "servers": "40+",
         "countries": 9,
-        "devices": "5 simultaneous",
+        "devices": "5",
         "protocols": [
           "WireGuard"
         ],
@@ -418,7 +418,7 @@
       "features": {
         "servers": "3000+",
         "countries": 50,
-        "devices": "8 simultaneous",
+        "devices": "8",
         "protocols": [
           "WireGuard",
           "OpenVPN"
